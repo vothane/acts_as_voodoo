@@ -71,7 +71,6 @@ module Acts
 
                # Build them up into the right format
                full_query_string = query_strings.join(" AND ")
-               p                 = full_query_string
                full_query_string
             end
 
