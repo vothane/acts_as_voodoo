@@ -15,9 +15,13 @@ class Asset < ActiveResource::Base
    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
 
    self.site = "https://api.ooyala.com/v2"
+   
+   # if your class is not name Asset 
+   # then you define element name as 'asset'
+   # self.element_name = "asset"
 end
 
-results = Asset.find(:all) do |vid|
+results = Asset.find(:one) do |vid|
    vid.description == "Under the sea."
    vid.duration > 600
 end
@@ -42,11 +46,14 @@ A sample query might look like:
 So using acts_as_voodoo, you would do this
 
 ``` ruby
-results = Asset.find(:all) do |vid|
+results = Asset.find(:one) do |vid|
    vid.description == "Under the sea."
    vid.duration > 600
 end
 ```
+
+### Examples
+
 The first 5 movies where the description is "Under the sea." that are greater than ten minutes long. The videos are ordered by created_at in ascending order.
 
 SELECT * WHERE description = 'Under the sea.' AND duration > 600 ORDER BY created_at descending
@@ -68,7 +75,7 @@ SELECT * WHERE embed_code IN ('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi',
 /v2/assets?where=embed_code IN ('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')
 
 ``` ruby
-results = Asset.find(:all) do |vid|
+results = Asset.find(:one) do |vid|
    vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')"
 end
 ```

@@ -22,8 +22,11 @@ module Acts
                   if block_given?
                      conditions = Query::Conditions.new(&block)
                      sub_set    = args.first
-                     options    = args.last || { }
-                     params     = { }
+                     if [1, :one].include? sub_set
+                        sub_set = :first
+                     end
+                     options = args.last || { }
+                     params  = { }
                      params.merge(options) if options.instance_of? Hash
                      params['where']     = conditions.to_where_conditions
                      params              = params.merge('api_key' => self.api_key, 'expires' => OOYALA::expires)
@@ -102,14 +105,18 @@ module Acts
             [:==, :>=, :<=, :>, :<, :^, :*, :=~].each do |operator|
                define_method(operator) do |operand|
                   @operator = operator
-                  if operand.instance_of? String
+                  if ((operand.instance_of? String) && operator != :*)
                      operand = "'#{operand}'"
                   end
                   @operand = operand
                end
 
                def to_query_condition
-                  "#{name}#{OPERATOR_MAP[operator]}#{operand}"
+                  if [:*, :=~].include? operator
+                     return "#{name} #{OPERATOR_MAP[operator]} #{operand}"
+                  else
+                     return "#{name}#{OPERATOR_MAP[operator]}#{operand}"
+                  end
                end
             end
          end
@@ -152,10 +159,13 @@ end
 # mock.delete "/stories/1.json", {}, nil, 200
 # end
 
-results = Asset.find(:all) do |vid|
+results1 = Asset.find(:all) do |vid|
    vid.description == "Under the sea."
    vid.duration > 600
 end
-puts results
+
+results2 = Asset.find(:one) do |vid|
+   vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')"
+end
 
 puts "done"
