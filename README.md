@@ -1,6 +1,8 @@
 Ooyala API V2 wrapper for Ruby (using ActiveResource) 
 ====================================================
 
+VOODOO - V<del>IDEO</del> <del>T</del>OO<del>LKIT</del> and D<del>ATA</del> for OO<del>YALA</del>
+ 
 This is a Ruby wrapper for the [OOYALA V2 API](http://api.ooyala.com/docs/v2) API that leverages ActiveResource.
 
 It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like syntax, i.e.:
