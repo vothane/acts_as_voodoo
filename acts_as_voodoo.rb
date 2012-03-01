@@ -34,7 +34,9 @@ module Acts
                      params['signature'] = signature
                      find_without_voodoo(sub_set, :params => params)
                   else
-                     find_without_voodoo(*args)
+                     expiration = OOYALA::expires
+                     signature = OOYALA::generate_signature( self.api_secret, "GET", "/v2/assets/#{args}", { 'api_key' => self.api_key, 'expires' => expiration }, nil)             
+                     find_without_voodoo(args, :params => { :api_key => self.api_key, :signature => signature, :expires => expiration })
                   end
                end
 
@@ -49,6 +51,15 @@ module Acts
 
                alias_method :collection_path_without_voodoo, :collection_path
                alias_method :collection_path, :collection_path_with_voodoo
+            
+               def element_path_with_voodoo(id, prefix_options = {}, query_options = nil)
+                  check_prefix_options(prefix_options)
+                  prefix_options, query_options = split_options(prefix_options) if query_options.nil?
+                  "#{prefix(prefix_options)}#{collection_name}/#{URI.parser.escape id.to_s}#{query_string(query_options)}"
+               end
+          
+               alias_method :element_path_without_voodoo, :element_path
+               alias_method :element_path, :element_path_with_voodoo
             end
          end
       end
@@ -168,4 +179,13 @@ results2 = Asset.find(:one) do |vid|
    vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')"
 end
 
+results3 = Asset.find(:all) do |vid|
+   vid.labels =~ "Case Study"
+end
+
+results4 = Asset.find(:all, :params => { 'orderby' => "duration descending", 'limit' => 5 }) do |vid|
+   vid.duration > 600
+end
+
+results5 = Asset.find('h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')
 puts "done"
