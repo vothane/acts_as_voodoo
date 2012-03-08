@@ -21,27 +21,33 @@ module Acts
                def find_with_voodoo(*args, &block)
                   if block_given?
                      conditions = Query::Conditions.new(&block)
-                     sub_set    = args.first
-                     if [1, :one].include? sub_set
-                        sub_set = :first
-                     end
-                     options = args.last || { }
-                     params  = { }
+                     scope    = args.slice!(0)
+                     options  = args.slice!(0)
+                     params   = {}
+                     
+                     if scope.instance_of? Integer
+                        unless scope == 1
+                           scope = :all
+                        else
+                           scope = :one   
+                        end
+                     end                     
                      params.merge(options) if options.instance_of? Hash
+                     
                      params['where']     = conditions.to_where_conditions
                      params              = params.merge('api_key' => self.api_key, 'expires' => OOYALA::expires)
-                     signature           = OOYALA::generate_signature(self.api_secret, "GET", "/v2/assets", params, nil)
-                     params['signature'] = signature
-                     find_without_voodoo(sub_set, :params => params)
+                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", "/v2/assets", params, nil)
+                     
+                     find_without_voodoo(scope, :params => params)
                   else
-                     scope = args.first
-                     opts  = args[1]
-                     path = "/v2/#{collection_name}"
-                     path = "#{path}/#{scope}" if scope.instance_of? String
-                     credentials = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }           
+                     scope                    = args.slice!(0)
+                     options                  = args.slice!(0)
+                     path                     = "/v2/#{collection_name}"
+                     path                     = "#{path}/#{scope}" if scope.instance_of? String
+                     credentials              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }           
                      credentials['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, credentials)           
                     
-                     if opts
+                     if options
                         find_without_voodoo( scope, opts.merge({:params => credentials}) )
                      else
                         find_without_voodoo( scope, :params => credentials )
