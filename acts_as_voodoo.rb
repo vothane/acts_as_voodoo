@@ -48,7 +48,7 @@ module Acts
                      credentials['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, credentials)           
                     
                      if options
-                        find_without_voodoo( scope, opts.merge({:params => credentials}) )
+                        find_without_voodoo( scope, options.merge({:params => credentials}) )
                      else
                         find_without_voodoo( scope, :params => credentials )
                      end
