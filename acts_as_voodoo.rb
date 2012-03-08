@@ -34,9 +34,18 @@ module Acts
                      params['signature'] = signature
                      find_without_voodoo(sub_set, :params => params)
                   else
-                     expiration = OOYALA::expires
-                     signature = OOYALA::generate_signature( self.api_secret, "GET", "/v2/assets/#{args}", { 'api_key' => self.api_key, 'expires' => expiration }, nil)             
-                     find_without_voodoo(args, :params => { :api_key => self.api_key, :signature => signature, :expires => expiration })
+                     scope = args.first
+                     opts  = args[1]
+                     path = "/v2/#{collection_name}"
+                     path = "#{path}/#{scope}" if scope.instance_of? String
+                     credentials = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }           
+                     credentials['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, credentials)           
+                    
+                     if opts
+                        find_without_voodoo( scope, opts.merge({:params => credentials}) )
+                     else
+                        find_without_voodoo( scope, :params => credentials )
+                     end
                   end
                end
 
@@ -188,4 +197,28 @@ results4 = Asset.find(:all, :params => { 'orderby' => "duration descending", 'li
 end
 
 results5 = Asset.find('h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')
+class Label < ActiveResource::Base
+  my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+  my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX' 
+  
+  acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+  
+  self.site = "https://api.ooyala.com/v2"
+end
+
+all_labels = Label.find(:all)
+label = Label.find('9459731df17043a08055fcc3e401ef9e')
+
+class Player < ActiveResource::Base
+  my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+  my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX' 
+  
+  acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+  
+  self.site = "https://api.ooyala.com/v2"
+end
+
+all_players = Player.find(:all)
+player = Player.find('718720520c141eab49a7044f3a3f9fe')
+
 puts "done"
