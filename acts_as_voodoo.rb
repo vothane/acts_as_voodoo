@@ -19,11 +19,18 @@ module Acts
 
             class << self
                def find_with_voodoo(*args, &block)
+                  scope   = args.slice!(0)
+                  options = args.slice!(0)
+                  path    = "/v2/#{collection_name}"
+                  path    = "#{path}/#{scope}" if scope.instance_of? String
+                  params  = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+            
                   if block_given?
                      conditions = Query::Conditions.new(&block)
-                     scope    = args.slice!(0)
-                     options  = args.slice!(0)
-                     params   = {}
+
+                     params.merge(options) if options.instance_of? Hash                     
+                     params['where']     = conditions.to_where_conditions
+                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, params, nil)
                      
                      if scope.instance_of? Integer
                         unless scope == 1
@@ -32,25 +39,15 @@ module Acts
                            scope = :one   
                         end
                      end                     
-                     params.merge(options) if options.instance_of? Hash
-                     
-                     params['where']     = conditions.to_where_conditions
-                     params              = params.merge('api_key' => self.api_key, 'expires' => OOYALA::expires)
-                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", "/v2/assets", params, nil)
                      
                      find_without_voodoo(scope, :params => params)
-                  else
-                     scope                    = args.slice!(0)
-                     options                  = args.slice!(0)
-                     path                     = "/v2/#{collection_name}"
-                     path                     = "#{path}/#{scope}" if scope.instance_of? String
-                     credentials              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }           
-                     credentials['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, credentials)           
+                  else                         
+                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, params)           
                     
                      if options
-                        find_without_voodoo( scope, options.merge({:params => credentials}) )
+                        find_without_voodoo( scope, params.merge({:params => options}) )
                      else
-                        find_without_voodoo( scope, :params => credentials )
+                        find_without_voodoo( scope, :params => params )
                      end
                   end
                end
@@ -191,7 +188,7 @@ results1 = Asset.find(:all) do |vid|
 end
 
 results2 = Asset.find(:one) do |vid|
-   vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')"
+   vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','hzZm8xMjp1GYiOpj2WDS4TtC7b2st1MW')"
 end
 
 results3 = Asset.find(:all) do |vid|
@@ -203,6 +200,7 @@ results4 = Asset.find(:all, :params => { 'orderby' => "duration descending", 'li
 end
 
 results5 = Asset.find('h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')
+
 class Label < ActiveResource::Base
   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
   my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX' 
