@@ -41,14 +41,19 @@ module Acts
                      end                     
                      
                      find_without_voodoo(scope, :params => params)
-                  else                         
-                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, params)           
-                    
-                     if options
-                        find_without_voodoo( scope, params.merge({:params => options}) )
-                     else
-                        find_without_voodoo( scope, :params => params )
-                     end
+                  else                                          
+                    if options
+                       if options[:from]
+                          params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", params) 
+                          find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => params )
+                       elsif
+                          params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, params) 
+                          find_without_voodoo( scope, params.merge({:params => options}) )
+                       end
+                    else
+                       params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, params) 
+                       find_without_voodoo( scope, :params => params )
+                    end
                   end
                end
 
@@ -199,7 +204,7 @@ results4 = Asset.find(:all, :params => { 'orderby' => "duration descending", 'li
    vid.duration > 600
 end
 
-results5 = Asset.find('h3Zm8xMjoShOFse9rB5rORgSC3Dzgaa3')
+results5 = Asset.find('dxZGdxMzomq2HVFWgXFDXnQ7hx5NpxJY')
 
 class Label < ActiveResource::Base
   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
@@ -224,5 +229,7 @@ end
 
 all_players = Player.find(:all)
 player = Player.find('718720520c141eab49a7044f3a3f9fe')
+
+unREST = Label.find(:all, :from => '/9459731df17043a08055fcc3e401ef9e/assets')
 
 puts "done"
