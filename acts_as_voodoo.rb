@@ -19,18 +19,18 @@ module Acts
 
             class << self
                def find_with_voodoo(*args, &block)
-                  scope   = args.slice!(0)
-                  options = args.slice!(0)
-                  path    = "/v2/#{collection_name}"
-                  path    = "#{path}/#{scope}" if scope.instance_of? String
-                  params  = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+                  scope        = args.slice!(0)
+                  options      = args.slice!(0)
+                  path         = "/v2/#{collection_name}"
+                  path         = "#{path}/#{scope}" if scope.instance_of? String
+                  this_params  = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
             
                   if block_given?
                      conditions = Query::Conditions.new(&block)
 
-                     params.merge(options) if options.instance_of? Hash                     
-                     params['where']     = conditions.to_where_conditions
-                     params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, params, nil)
+                     this_params.merge(options) if options.instance_of? Hash                     
+                     this_params['where']     = conditions.to_where_conditions
+                     this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
                      
                      if scope.instance_of? Integer
                         unless scope == 1
@@ -40,19 +40,19 @@ module Acts
                         end
                      end                     
                      
-                     find_without_voodoo(scope, :params => params)
+                     find_without_voodoo(scope, :params => this_params)
                   else                                          
                     if options
                        if options[:from]
-                          params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", params) 
-                          find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => params )
+                          this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params) 
+                          find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => this_params )
                        elsif
-                          params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, params) 
-                          find_without_voodoo( scope, params.merge({:params => options}) )
+                          this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
+                          find_without_voodoo( scope, this_params.merge({:params => options}) )
                        end
                     else
-                       params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, params) 
-                       find_without_voodoo( scope, :params => params )
+                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
+                       find_without_voodoo( scope, :params => this_params )
                     end
                   end
                end
