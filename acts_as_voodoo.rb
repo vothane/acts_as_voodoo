@@ -84,12 +84,13 @@ module Acts
       
       module InstanceMethods
          def update
-            post_hash           = ActiveSupport::JSON.decode(encode)
-            post_hash           = post_hash['asset']
-            post_body           = ActiveSupport::JSON.encode(post_hash)
+            patch_hash           = ActiveSupport::JSON.decode(encode)
+            root                = ActiveSupport::Inflector.singularize self.class.collection_name
+            patch_hash          = patch_hash[root]
+            patch_body          = ActiveSupport::JSON.encode(patch_hash)
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
             path                = "#{collection_path[0..-1]}" 
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params)
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
 
             connection.put("#{element_path(prefix_options)[0..-1]}?#{params.to_query}", post_body, self.class.headers).tap do |response|
                load_attributes_from_response(response)
@@ -98,7 +99,8 @@ module Acts
 
          def create
             post_hash           = ActiveSupport::JSON.decode(encode)
-            post_hash           = post_hash["asset"]
+            root                = ActiveSupport::Inflector.singularize self.class.collection_name
+            post_hash           = post_hash[root]
             post_body           = ActiveSupport::JSON.encode(post_hash)
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
             path                = "#{collection_path[0..-1]}" 
@@ -267,5 +269,9 @@ res = Asset.new
 res.asset_type = "channel"
 res.name       = "new channel test"
 test_save = res.save
+
+new_label = Label.new
+new_label.name = "my new label"
+new_label.save
 
 puts "done"
