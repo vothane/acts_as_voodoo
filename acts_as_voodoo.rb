@@ -78,8 +78,39 @@ module Acts
                alias_method :element_path_without_voodoo, :element_path
                alias_method :element_path, :element_path_with_voodoo
             end
+            include InstanceMethods
          end
       end
+      
+      module InstanceMethods
+         def update
+            post_hash           = ActiveSupport::JSON.decode(encode)
+            post_hash           = post_hash['asset']
+            post_body           = ActiveSupport::JSON.encode(post_hash)
+            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+            path                = "#{collection_path[0..-1]}" 
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params)
+
+            connection.put("#{element_path(prefix_options)[0..-1]}?#{params.to_query}", post_body, self.class.headers).tap do |response|
+               load_attributes_from_response(response)
+            end
+         end
+
+         def create
+            post_hash           = ActiveSupport::JSON.decode(encode)
+            post_hash           = post_hash["asset"]
+            post_body           = ActiveSupport::JSON.encode(post_hash)
+            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+            path                = "#{collection_path[0..-1]}" 
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "POST", path, params, post_body)
+            
+            connection.post("#{collection_path[0..-1]}?#{params.to_query}", post_body, self.class.headers).tap do |response|
+               self.id = id_from_response(response)
+               load_attributes_from_response(response)
+            end
+         end      
+      end
+          
       module Query
          class Conditions
             def initialize(&block)
@@ -231,5 +262,10 @@ all_players = Player.find(:all)
 player = Player.find('718720520c141eab49a7044f3a3f9fe')
 
 unREST = Label.find(:all, :from => '/9459731df17043a08055fcc3e401ef9e/assets')
+
+res = Asset.new
+res.asset_type = "channel"
+res.name       = "new channel test"
+test_save = res.save
 
 puts "done"
