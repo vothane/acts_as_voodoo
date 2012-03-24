@@ -1,3 +1,6 @@
+require 'digest/sha2'
+require 'base64'
+
 module OOYALA
    def self.generate_signature(secret, http_method, request_path, query_string_params, request_body = nil)
       string_to_sign      = secret + http_method + request_path

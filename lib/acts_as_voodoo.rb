@@ -1,10 +1,9 @@
 require 'rubygems'
 require 'active_resource'
 require 'active_support'
-require 'digest/sha2'
-require 'base64'
 require 'query'
 require 'ooyala'
+require 'helper'
 
 module Acts
    module Voodoo # Video tOOlkit & Data for OOyala
@@ -86,29 +85,23 @@ module Acts
       
       module InstanceMethods
          def update
-            patch_hash          = ActiveSupport::JSON.decode(encode)
-            root                = ActiveSupport::Inflector.singularize self.class.collection_name
-            patch_hash          = patch_hash[root]
-            patch_body          = ActiveSupport::JSON.encode(patch_hash)
+            patch_body          = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "#{collection_path[0..-1]}" 
+            path                = "/v2/#{self.class.collection_name}" 
             params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
 
-            connection.put("#{element_path(prefix_options)[0..-1]}?#{params.to_query}", post_body, self.class.headers).tap do |response|
+            connection.put("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
                load_attributes_from_response(response)
             end
          end
 
          def create
-            post_hash           = ActiveSupport::JSON.decode(encode)
-            root                = ActiveSupport::Inflector.singularize self.class.collection_name
-            post_hash           = post_hash[root]
-            post_body           = ActiveSupport::JSON.encode(post_hash)
+            post_body           = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "#{collection_path[0..-1]}" 
+            path                = "/v2/#{self.class.collection_name}" 
             params['signature'] = OOYALA::generate_signature( self.api_secret, "POST", path, params, post_body)
             
-            connection.post("#{collection_path[0..-1]}?#{params.to_query}", post_body, self.class.headers).tap do |response|
+            connection.post("#{path}?#{params.to_query}", post_body, self.class.headers).tap do |response|
                self.id = id_from_response(response)
                load_attributes_from_response(response)
             end
