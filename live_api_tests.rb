@@ -64,4 +64,19 @@ new_label = Label.new
 new_label.name = "my new label"
 new_label.save
 
+all_labels = Label.find(:all)
+all_labels.each do |label|
+   if label.name == "my new label"
+      label.destroy
+   end
+end
+
+
+all_players = Player.find(:all)
+all_players.each do |player|
+   if player.name == "new channel test"
+      player.destroy
+   end
+end
+
 puts "done"

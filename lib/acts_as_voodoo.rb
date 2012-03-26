@@ -90,7 +90,7 @@ module Acts
             path                = "/v2/#{self.class.collection_name}" 
             params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
 
-            connection.put("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
+            connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
                load_attributes_from_response(response)
             end
          end
@@ -105,7 +105,14 @@ module Acts
                self.id = id_from_response(response)
                load_attributes_from_response(response)
             end
-         end      
+         end  
+         
+         def destroy
+            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "DELETE", element_path, params)
+            
+            connection.delete("#{element_path}?#{params.to_query}", self.class.headers)
+         end    
       end
    end
 end
