@@ -71,12 +71,15 @@ all_labels.each do |label|
    end
 end
 
-
-all_players = Player.find(:all)
-all_players.each do |player|
-   if player.name == "new channel test"
-      player.destroy
+all_assets = Asset.find(:all)
+all_assets.each do |asset|
+   if asset.name == "new channel test"
+      asset.destroy
    end
 end
+
+patch = Asset.find('RuZnI5NDoIpgq3d-yCELr6RxVkuhLrBs')
+patch.description = results5.description + " FUCKING GAY!!!"
+patch.save
 
 puts "done"

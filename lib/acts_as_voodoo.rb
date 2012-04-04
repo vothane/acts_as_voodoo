@@ -17,7 +17,8 @@ module Acts
             self.api_key = credentials[:api_key]
             cattr_accessor :api_secret
             self.api_secret = credentials[:api_secret]
-
+            @primary_key = 'embed_code' if element_name == 'asset'
+            
             class << self
                def find_with_voodoo(*args, &block)
                   scope        = args.slice!(0)
@@ -87,12 +88,13 @@ module Acts
          def update
             patch_body          = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "/v2/#{self.class.collection_name}" 
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
-
-            connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
-               load_attributes_from_response(response)
-            end
+            path                = "/v2/#{self.class.collection_name}/#{id}" 
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body )
+            url                 = "#{self.class.site.scheme}://#{self.class.site.host}#{path}?#{URI.parser.escape params.to_query}"
+            
+            response = Helper::send_request('PATCH', url, patch_body)
+            
+            load_attributes_from_response(response)
          end
 
          def create
