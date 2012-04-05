@@ -66,20 +66,20 @@ new_label.save
 
 all_labels = Label.find(:all)
 all_labels.each do |label|
-   if label.name == "my new label"
+   if label.name == "my new labely"
       label.destroy
    end
 end
 
 all_assets = Asset.find(:all)
 all_assets.each do |asset|
-   if asset.name == "new channel test"
+   if asset.name == "newest channel test"
       asset.destroy
    end
 end
 
-patch = Asset.find('RuZnI5NDoIpgq3d-yCELr6RxVkuhLrBs')
-patch.description = results5.description + " FUCKING GAY!!!"
+patch = Asset.find('g2cXI5NDpVyT8R0xlrun8tfzDB_d3rLc')
+patch.description = results5.description + " updated attributes"
 patch.save
 
 puts "done"

@@ -44,17 +44,15 @@ module Acts
                      
                      find_without_voodoo(scope, :params => this_params)
                   else                                          
-                    if options
-                       if options[:from]
-                          this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params) 
-                          find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => this_params )
-                       elsif
-                          this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
-                          find_without_voodoo( scope, this_params.merge({:params => options}) )
-                       end
+                    if options && options[:from]
+                      this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params) 
+                      find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => this_params )
+                    elsif options
+                      this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
+                      find_without_voodoo( scope, this_params.merge({:params => options}) )
                     else
-                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
-                       find_without_voodoo( scope, :params => this_params )
+                      this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
+                      find_without_voodoo( scope, :params => this_params )
                     end
                   end
                end
