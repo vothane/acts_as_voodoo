@@ -22,6 +22,7 @@ module Acts
             class << self
                def find_with_voodoo(*args, &block)
                   scope        = args.slice!(0)
+                  scope        = :all if scope.instance_of? Integer
                   options      = args.slice!(0)
                   path         = "/v2/#{collection_name}"
                   path         = "#{path}/#{scope}" if scope.instance_of? String
@@ -33,15 +34,7 @@ module Acts
                      this_params.merge(options) if options.instance_of? Hash                     
                      this_params['where']     = conditions.to_where_conditions
                      this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
-                     
-                     if scope.instance_of? Integer
-                        unless scope == 1
-                           scope = :all
-                        else
-                           scope = :one   
-                        end
-                     end                     
-                     
+                                          
                      find_without_voodoo(scope, :params => this_params)
                   else                                          
                     if options && options[:from]

@@ -66,14 +66,14 @@ new_label.save
 
 all_labels = Label.find(:all)
 all_labels.each do |label|
-   if label.name == "my new labely"
+   if label.name == "my new label"
       label.destroy
    end
 end
 
 all_assets = Asset.find(:all)
 all_assets.each do |asset|
-   if asset.name == "newest channel test"
+   if asset.name == "new channel test"
       asset.destroy
    end
 end
