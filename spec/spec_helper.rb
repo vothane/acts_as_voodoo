@@ -9,3 +9,5 @@ end
 def fixture(file)
   File.new(fixture_path + '/' + file)
 end
+
+ActiveResource::Base.send :include, ActiveResource::FakeResource

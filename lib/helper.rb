@@ -9,7 +9,6 @@ module Helper
   end
 
   def self.send_request(http_method, url, request_body = nil)
-    t = http_method.to_s.downcase.to_sym
     request = RestClient::Request.new\
     :method  => http_method.to_s.downcase.to_sym,
     :url     => url,
