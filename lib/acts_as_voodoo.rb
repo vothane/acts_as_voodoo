@@ -79,13 +79,15 @@ module Acts
          def update
             patch_body          = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "/v2/#{self.class.collection_name}/#{id}" 
+            path                = "/v2/#{self.class.collection_name}" 
             params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body )
             url                 = "#{self.class.site.scheme}://#{self.class.site.host}#{path}?#{URI.parser.escape params.to_query}"
-            
-            response = Helper::send_request('PATCH', url, patch_body)
-            
-            load_attributes_from_response(response)
+                
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
+        
+            connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|  
+              load_attributes_from_response(response)    
+            end
          end
 
          def create
