@@ -52,7 +52,7 @@ results = Asset.find(:one) do |vid|
 end
 ```
 
-### Examples
+### Query API Examples
 
 The first 5 movies where the description is "Under the sea." that are greater than ten minutes long. The videos are ordered by created_at in ascending order.
 
@@ -90,4 +90,80 @@ SELECT * WHERE labels INCLUDES 'Case Study'
 results = Asset.find(:all) do |vid|
    vid.labels =~ "Case Study"
 end
+```
+
+Create a channel or channel set
+
+Required fields: name, asset_type.
+
+Use an asset type of "channel_set" to create a channel set.
+
+``` ruby
+new_channel            = Asset.new
+new_channel.asset_type = "channel"
+new_channel.name       = "new channel test"
+new_channel.save
+```
+
+Delete an asset
+
+``` ruby
+# find by video embed code
+video = Asset.find('g2cXI5NDpVyT8R0xlrun8tfzDB_d3rLc')
+video.destroy
+```
+
+### Label API Examples
+
+``` ruby
+class Label < ActiveResource::Base
+   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+   my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+
+   acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+
+   self.site = "https://api.ooyala.com/v2"
+   
+   # if your class is not name Label 
+   # then you define element name as 'label'
+   # self.element_name = "label"
+end
+```
+Create a label
+
+Required parameters: name.
+
+``` ruby
+new_label = Label.new
+new_label.name = "my new label"
+new_label.save
+```
+
+Note: The name cannot contain hidden characters. Hidden characters are those with ascii values between 0 and 31, except for 10 (newline) and 13 (carriage return).
+
+Delete labels
+
+Deleting a label will automatically delete all its children.
+
+``` ruby
+all_labels = Label.find(:all)
+
+all_labels.each do |label|
+  if label.name == "my new label"
+    label.destroy
+  end
+end
+```
+
+View all labels
+
+``` ruby
+all_labels = Label.find(:all)
+```
+
+View one label
+
+``` ruby
+# find by label id
+label = Label.find('9459731df17043a08055fcc3e401ef9e')
 ```
