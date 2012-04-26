@@ -99,7 +99,7 @@ EventMachine.run {
     upload_url   = get_upload_url.response
     upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
     upload_video.callback {
-      video.put("#{video.embed_code}/upload_status", { :status => "uploaded" })
+#      video.put("#{video.embed_code}/upload_status", { :status => "uploaded" })
     }
     upload_video.errback {
     # notify user that upload failed
