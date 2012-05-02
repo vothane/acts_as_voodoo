@@ -78,16 +78,22 @@ module Acts
       module InstanceMethods
          def update
             patch_body          = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
-            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "/v2/#{self.class.collection_name}" 
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body )
-            url                 = "#{self.class.site.scheme}://#{self.class.site.host}#{path}?#{URI.parser.escape params.to_query}"
-                
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", path, params, patch_body)
-        
-            connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|  
-              load_attributes_from_response(response)    
-            end
+            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }                   
+            patch_hash          = ActiveSupport::JSON.decode(patch_body) 
+            
+            patch_hash.delete_if { |key, value| ['created_at', 'updated_at', 'embed_code', 'id', 'duration', 'parent_id'].include? key.to_s }                   
+            
+            patch_body          = ActiveSupport::JSON.encode(patch_hash)              
+            path                = "/v2/#{self.class.collection_name}"           
+            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", "#{path}/#{id}", params, patch_body )
+            url                 = "#{self.class.site.scheme}://#{self.class.site.host}#{path}/#{id.to_s}?#{URI.parser.escape params.to_query}" 
+            
+            # connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|  
+              # load_attributes_from_response(response)    
+            # end
+            
+            response = OOYALA::send_patch_request(url, patch_body)
+            self.load(response) 
          end
 
          def create

@@ -1,6 +1,6 @@
 $:.unshift(File.join(File.dirname(__FILE__), ".", "lib"))
 require 'acts_as_voodoo'
-require 'em-http'
+#require 'em-http-request'
 
 class Asset < ActiveResource::Base
   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
@@ -38,8 +38,18 @@ class Label < ActiveResource::Base
   self.site = "https://api.ooyala.com/v2"
 end
 
+patch = Asset.find('Rxb3I5NDoppIz3iDJ7oQjtdJNa650jqw')
+
+patch.name = "patch vvv"
+patch.save
+
 all_labels = Label.find(:all)
-label = Label.find('9459731df17043a08055fcc3e401ef9e')
+all_labels.each do |label|
+  if label.name == "title"
+    label.destroy
+  end
+end
+
 class Player < ActiveResource::Base
   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
   my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
@@ -92,24 +102,24 @@ path                = "https://api.ooyala.com/v2/assets/#{video.embed_code}/uplo
 params              = { 'api_key' => api_key, 'expires' => OOYALA::expires }
 params['signature'] = OOYALA::generate_signature(api_secret, "GET", "/v2/assets/#{video.embed_code}/uploading_urls", params, nil)
 
-EventMachine.run {
-  get_upload_url = EventMachine::HttpRequest.new(path).get :query => params
-
-  get_upload_url.callback {
-    upload_url   = get_upload_url.response
-    upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
-    upload_video.callback {
-#      video.put("#{video.embed_code}/upload_status", { :status => "uploaded" })
-    }
-    upload_video.errback {
-    # notify user that upload failed
-      puts "upload failed"
-    }
-  }
-  get_upload_url.errback {
-  # notify user that upload failed
-    puts "upload failed"
-  }
-}
+# EventMachine.run {
+  # get_upload_url = EventMachine::HttpRequest.new(path).get :query => params
+# 
+  # get_upload_url.callback {
+    # upload_url   = get_upload_url.response
+    # upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
+    # upload_video.callback {
+# #      video.put("#{video.embed_code}/upload_status", { :status => "uploaded" })
+    # }
+    # upload_video.errback {
+    # # notify user that upload failed
+      # puts "upload failed"
+    # }
+  # }
+  # get_upload_url.errback {
+  # # notify user that upload failed
+    # puts "upload failed"
+  # }
+# }
 
 puts "done"
