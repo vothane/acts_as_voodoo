@@ -102,24 +102,26 @@ path                = "https://api.ooyala.com/v2/assets/#{video.embed_code}/uplo
 params              = { 'api_key' => api_key, 'expires' => OOYALA::expires }
 params['signature'] = OOYALA::generate_signature(api_secret, "GET", "/v2/assets/#{video.embed_code}/uploading_urls", params, nil)
 
-# EventMachine.run {
-  # get_upload_url = EventMachine::HttpRequest.new(path).get :query => params
-# 
-  # get_upload_url.callback {
-    # upload_url   = get_upload_url.response
-    # upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
-    # upload_video.callback {
-# #      video.put("#{video.embed_code}/upload_status", { :status => "uploaded" })
-    # }
-    # upload_video.errback {
-    # # notify user that upload failed
-      # puts "upload failed"
-    # }
-  # }
-  # get_upload_url.errback {
-  # # notify user that upload failed
-    # puts "upload failed"
-  # }
-# }
+EventMachine.run {
+  get_upload_url = EventMachine::HttpRequest.new(path).get :query => params
+
+  get_upload_url.callback {
+    upload_url   = get_upload_url.response
+    upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
+    upload_video.callback {
+      video.put(:upload_status,\
+        { :api_key => api_key, :expires => api_secret, :signature => params['signature'] },\
+        "'status':'uploaded'")
+    }
+    upload_video.errback {
+    # notify user that upload failed
+      puts "upload failed"
+    }
+  }
+  get_upload_url.errback {
+  # notify user that upload failed
+    puts "upload failed"
+  }
+}
 
 puts "done"

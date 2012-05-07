@@ -114,6 +114,16 @@ module Acts
             
             connection.delete("#{element_path}?#{params.to_query}", self.class.headers)
          end    
+         
+         def put(method_name, options = {}, body = '')
+            connection.put(custom_method_element_url(method_name, options), body, self.class.headers)
+         end  
+         
+         private
+         
+         def custom_method_element_url(method_name, options = {})
+            "#{self.class.prefix(prefix_options)}#{self.class.collection_name}/#{id}/#{method_name}#{self.class.__send__(:query_string, options)}"
+         end  
       end
    end
 end
