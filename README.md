@@ -35,7 +35,7 @@ beta only, not yet published as a gem.
 
 ### Usage
 
-Right now, functionality is limited to the The Query API can be used to request detailed information about your assets.
+The Query API can be used to request detailed information about your assets.
 
 Queries are built using a SQL-like interface.
 
@@ -91,6 +91,8 @@ results = Asset.find(:all) do |vid|
    vid.labels =~ "Case Study"
 end
 ```
+
+### Asset API Examples
 
 Create a channel or channel set
 
