@@ -119,6 +119,27 @@ module Acts
             connection.put(custom_method_element_url(method_name, options), body, self.class.headers)
          end  
          
+         def get(method_name, options = {})
+            self.class.format.decode(connection.get(custom_method_element_url(method_name, options), self.class.headers).body)
+         end
+    
+         def post(method_name, options = {}, body = nil)
+            request_body = body.blank? ? encode : body
+            if new?
+              connection.post(custom_method_new_element_url(method_name, options), request_body, self.class.headers)
+            else
+              connection.post(custom_method_element_url(method_name, options), request_body, self.class.headers)
+            end
+         end
+    
+         def patch(method_name, options = {}, body = '')
+            connection.patch(custom_method_element_url(method_name, options), body, self.class.headers)
+         end
+
+         def delete(method_name, options = {})
+            connection.delete(custom_method_element_url(method_name, options), self.class.headers)
+         end
+        
          private
          
          def custom_method_element_url(method_name, options = {})
