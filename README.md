@@ -169,3 +169,43 @@ View one label
 # find by label id
 label = Label.find('9459731df17043a08055fcc3e401ef9e')
 ```
+
+### Uploading Videos
+
+One way to upload videos.
+
+``` ruby
+video            = Asset.new
+video.name       = 'vid'
+video.file_name  = 'vid.flv'
+video.asset_type = 'video'
+video.file_size  = '2795138'
+video.post_processing_status = 'live'
+video.save
+
+path                = "https://api.ooyala.com/v2/assets/#{video.embed_code}/uploading_urls"
+params              = { 'api_key' => api_key, 'expires' => OOYALA::expires }
+params['signature'] = OOYALA::generate_signature(api_secret, "GET", "/v2/assets/#{video.embed_code}/uploading_urls", params, nil)
+
+EventMachine.run {
+  get_upload_url = EventMachine::HttpRequest.new(path).get :query => params
+
+  get_upload_url.callback {
+    upload_url   = get_upload_url.response
+    upload_video = EventMachine::HttpRequest.new(upload_url).post :file => video.file_name
+    upload_video.callback {
+      video.put(:upload_status,\
+        { :api_key => api_key, :expires => api_secret, :signature => params['signature'] },\
+        "'status':'uploaded'")
+    }
+    upload_video.errback {
+    # notify user that upload failed
+      puts "upload failed"
+    }
+  }
+  get_upload_url.errback {
+  # notify user that upload failed
+    puts "upload failed"
+  }
+}
+```
