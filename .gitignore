@@ -1,2 +1,4 @@
 .project
 .idea
+api_keys.yml
+live_api_tests.rb
