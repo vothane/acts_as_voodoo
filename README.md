@@ -9,8 +9,8 @@ It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like
 
 ``` ruby
 class Asset < ActiveResource::Base
-   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-   my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+   my_api_key    = '<API KEY HERE>'
+   my_api_secret = '<API SECRET HERE>'
 
    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
 
@@ -119,8 +119,8 @@ video.destroy
 
 ``` ruby
 class Label < ActiveResource::Base
-   my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-   my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+   my_api_key    = '<API KEY HERE>'
+   my_api_secret = '<API SECRET HERE>'
 
    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
 
