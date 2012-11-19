@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.0.0
       Date:
-      - Mon, 19 Nov 2012 07:37:53 GMT
+      - Mon, 19 Nov 2012 07:46:34 GMT
       Content-Type:
       - application/json
       Connection:
@@ -30,7 +30,7 @@ http_interactions:
       - 200 OK
       - 200 OK
       Ooyala-Server-Id:
-      - i-930e1cf5,i-38e3a140
+      - i-59f70937,i-38e3a140
       Cache-Control:
       - no-cache
       X-Ratelimit-Credits:
@@ -38,15 +38,15 @@ http_interactions:
       X-Ratelimit-Reset:
       - '60'
       Ooyala-Request-Id:
-      - 843e1296d699cb2a56f19f0328a82129
+      - 236965a893c456eb5f58a9c28cdebd3e
       X-Varnish-Ip:
-      - 10.28.97.158
+      - 10.251.243.175
       Content-Length:
       - '987'
       Accept-Ranges:
       - bytes
       X-Varnish:
-      - '1985465158'
+      - '356585073'
       Via:
       - 1.1 varnish
       Age:

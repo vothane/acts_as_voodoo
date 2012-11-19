@@ -29,7 +29,7 @@ module Acts
                      this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
                                           
                      find_without_voodoo(:all, :params => this_params)
-                  else                                      
+                  else                                        
                     if options && options[:from]
                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params) 
                       find_without_voodoo( :all, :from => "#{path}#{options[:from]}", :params => this_params )
