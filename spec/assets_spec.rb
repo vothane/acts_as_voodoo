@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe 'acts_as_voodoo for querying assets' do
+describe 'acts_as_voodoo for assets' do
 
   class Asset < ActiveResource::Base
      my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'

@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=+HB/6SmVv4WA25TRQH9FoIVnsBY/2YCMKg9zpspe04I
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 19 Nov 2012 11:54:31 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-2fb35657,i-38e3a140
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '294'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 617375292eae9943cf33d59416607b41
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Content-Length:
+      - '542'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - 1985965595 1985965539
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - HIT
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"full_name":"/Movie Trailer","parent_id":null,"name":"Movie
+        Trailer","id":"b5e9bf9a0e5a4b31991cfdf9218c4342"},{"full_name":"/new label","parent_id":null,"name":"new
+        label","id":"48b48a8a167b4d33a37926647f4ba366"},{"full_name":"/new label","parent_id":null,"name":"new
+        label","id":"54e385649fb1444ea0d56f49d5aad911"},{"full_name":"/new label","parent_id":null,"name":"new
+        label","id":"9f3ebd34f16244d9a50580a3135f04e4"},{"full_name":"/TV Commercial","parent_id":null,"name":"TV
+        Commercial","id":"3329684004c444d3b7b03707dcdaf7d0"}]}'
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.ooyala.com/v2/labels/48b48a8a167b4d33a37926647f4ba366?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=S2E3JPmnZy8XqPUM98Lfoo+wk3AlXB1NSiwHlA4J33E
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 19 Nov 2012 11:54:33 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-1e80e064,i-90e3a1e8
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '299'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 923ef151f98c8edda3afeb5bbdcec6d0
+      Content-Length:
+      - '0'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1985965642'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.ooyala.com/v2/labels/54e385649fb1444ea0d56f49d5aad911?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=V4ZnrAE1oWwqNtBLAhQdLJ3UjPRVSkdhfo4z8tQRpws
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.3
+      Date:
+      - Mon, 19 Nov 2012 11:54:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-930e1cf5,i-38e3a140
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '298'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 8fdee475f0c96d3c7bea731c3cf0e3cb
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1985965687'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.ooyala.com/v2/labels/9f3ebd34f16244d9a50580a3135f04e4?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=+Ixugs/CcJQUg2TojACXdJThnswPIXDNYajwjEV1cJY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 19 Nov 2012 11:54:36 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-150e1c73,i-f0e3a188
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '297'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 9b6f58d036e92a2dc6a0ce13f9356f88
+      Content-Length:
+      - '0'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1985965736'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+recorded_with: VCR 2.3.0
