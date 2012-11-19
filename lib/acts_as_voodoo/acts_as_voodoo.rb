@@ -28,17 +28,17 @@ module Acts
                      this_params['where']     = conditions.to_where_conditions
                      this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
                                           
-                     find_without_voodoo(scope, :params => this_params)
-                  else                                          
+                     find_without_voodoo(:all, :params => this_params)
+                  else                                      
                     if options && options[:from]
                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params) 
-                      find_without_voodoo( scope, :from => "#{path}#{options[:from]}", :params => this_params )
+                      find_without_voodoo( :all, :from => "#{path}#{options[:from]}", :params => this_params )
                     elsif options
                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
-                      find_without_voodoo( scope, this_params.merge({:params => options}) )
+                      find_without_voodoo( :all, this_params.merge({:params => options}) )
                     else
                       this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params) 
-                      find_without_voodoo( scope, :params => this_params )
+                      find_without_voodoo( :all, :params => this_params )
                     end
                   end
                end

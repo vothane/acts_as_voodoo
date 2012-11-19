@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=E8yGg8XjLxwc6eJPiYmD65Du5JDLDhJkP8nd9gsoD1w&where=description='Thor'%20AND%20labels%20INCLUDES%20'TV%20Commercial'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.3
+      Date:
+      - Mon, 19 Nov 2012 07:38:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '12'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-21b35659,i-90e3a1e8
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '294'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 5af2c152262663c36d8952c794479175
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1985465409'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[]}'
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+recorded_with: VCR 2.3.0

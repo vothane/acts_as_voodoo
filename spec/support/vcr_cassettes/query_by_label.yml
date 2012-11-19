@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=ysgn2TPZnePWYFt5HIa3WqlsRF4uvtw+ruf9tWmLYPo&where=labels%20INCLUDES%20'TV%20Commercial'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 19 Nov 2012 07:37:56 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-4b589f28,i-90e3a1e8
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '296'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 43097a60ad86e0a70d0f631e1469df31
+      X-Varnish-Ip:
+      - 10.251.243.175
+      Content-Length:
+      - '843'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '356568805'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"status":"live","description":"Darth Vader''s iconic status
+        has made the character a synonym for evil in popular culture; psychiatrists
+        have even considered him as a useful example to explain borderline personality
+        disorder to medical students. The character has gained much positive reception
+        as a classic film villain. BADASS.","external_id":null,"ad_set_id":null,"time_restrictions":null,"asset_type":"ad","hosted_at":null,"embed_code":"84d2hxMzoDdGIIc1aciS20lsB3OMox0S","original_file_name":"The
+        Force_ Volkswagen Commercial.flv","duration":61583,"name":"The Force Volkswagen
+        Commercial","created_at":"2012-03-10T20:44:30Z","preview_image_url":"http://ak.c.ooyala.com/84d2hxMzoDdGIIc1aciS20lsB3OMox0S/LHp2csp3BVpxnnKX5hMDoxOm1xO-1jSC","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","updated_at":"2012-03-10T20:48:50Z"}]}'
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+recorded_with: VCR 2.3.0

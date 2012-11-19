@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=/xR/tzjbAi0MB0Ypi9qNRjtS02Uhf6VX+uFmmsB+r+Q&where=duration%3E0
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=cn9dAj2H4XA9ucDAuJzVGwo4MoH38Dhcb4yTgCKoIjA
     body:
       encoding: US-ASCII
       string: ''
@@ -21,16 +21,13 @@ http_interactions:
     headers:
       !binary "U2VydmVy":
       - !binary |-
-        bmdpbngvMS4yLjM=
+        bmdpbngvMS4wLjA=
       !binary "RGF0ZQ==":
       - !binary |-
-        U3VuLCAxOCBOb3YgMjAxMiAwOToxOToyNCBHTVQ=
+        TW9uLCAxOSBOb3YgMjAxMiAwNzozNzo0OSBHTVQ=
       !binary "Q29udGVudC1UeXBl":
       - !binary |-
         YXBwbGljYXRpb24vanNvbg==
-      !binary "Q29udGVudC1MZW5ndGg=":
-      - !binary |-
-        MTc2NjE=
       !binary "Q29ubmVjdGlvbg==":
       - !binary |-
         a2VlcC1hbGl2ZQ==
@@ -41,7 +38,7 @@ http_interactions:
         MjAwIE9L
       !binary "T295YWxhLVNlcnZlci1JZA==":
       - !binary |-
-        aS0xZTgwZTA2NCxpLTM4ZTNhMTQw
+        aS0zMWY3MDk1ZixpLTM4ZTNhMTQw
       !binary "Q2FjaGUtQ29udHJvbA==":
       - !binary |-
         bm8tY2FjaGU=
@@ -53,16 +50,19 @@ http_interactions:
         NjA=
       !binary "T295YWxhLVJlcXVlc3QtSWQ=":
       - !binary |-
-        YTkyMjY2YmZjZjNiMzg5YzhjNmM4MWQ2MjhjODdhZmM=
+        YWI4YjVlMDA1MzZiYmQyYjA1YTRjNzIwMjFkZTEyZjM=
       !binary "WC1WYXJuaXNoLUlw":
       - !binary |-
         MTAuMjguOTcuMTU4
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        MTc2NjE=
       !binary "QWNjZXB0LVJhbmdlcw==":
       - !binary |-
         Ynl0ZXM=
       !binary "WC1WYXJuaXNo":
       - !binary |-
-        MTk4MjUxNzU3Mg==
+        MTk4NTQ2NDk5NA==
       !binary "Vmlh":
       - !binary |-
         MS4xIHZhcm5pc2g=

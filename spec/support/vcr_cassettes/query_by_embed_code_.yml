@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=+CAmR9wdHd79r/jM1704LlSWNf7rmnnUO56kgZ+Irqo&where=embed_code%20IN%20('U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 19 Nov 2012 07:37:53 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Ooyala-Server-Id:
+      - i-930e1cf5,i-38e3a140
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '297'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Request-Id:
+      - 843e1296d699cb2a56f19f0328a82129
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Content-Length:
+      - '987'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1985465158'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"status":"live","description":"As World War II comes to
+        an end in 1945, Hans Kammler and other German scientists make a breakthrough
+        in anti-gravity research. From a secret base in the Antarctic, Nazi spaceships
+        are sent to the \"dark side\" of the Moon to establish the military base \"Schwarze
+        Sonne\" (i.e. Black Sun). Their plan is to build a powerful fleet and return
+        to conquer Earth. The film is set in the year 2018 when their descendants
+        finally return.","external_id":null,"ad_set_id":null,"time_restrictions":null,"asset_type":"video","hosted_at":null,"embed_code":"U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9","original_file_name":"Iron
+        Sky Official Trailer #2 - Nazi_s on the Moon Movie (201.flv","duration":113875,"name":"Iron
+        Sky","created_at":"2012-03-10T19:26:28Z","preview_image_url":"http://ak.c.ooyala.com/U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9/2c0YxGwJFvMxVXlX5hMDoxOmFkO7UOTK","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","updated_at":"2012-03-10T20:37:35Z"}]}'
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+recorded_with: VCR 2.3.0
