@@ -1,7 +1,5 @@
 require 'digest/sha2'
 require 'base64'
-require 'rest-client'
-require 'json'
 
 ROUND_UP_TIME = 300
 
@@ -18,18 +16,5 @@ module OOYALA
   def self.expires(expiration_window = 25)
     expiration = Time.now.to_i + expiration_window
     expiration + ROUND_UP_TIME - (expiration%ROUND_UP_TIME)
-  end
-
-  def self.send_patch_request(url, request_body = nil)
-
-    request = RestClient::Request.new\
-      :method  => :patch,
-      :url     => url,
-      :payload => request_body
-
-    response = request.execute
-
-    return [] if response.body.empty?
-    JSON.parse(response.body)
   end
 end

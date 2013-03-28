@@ -85,7 +85,7 @@ module Acts
               # load_attributes_from_response(response)    
             # end
             
-            response = OOYALA::send_patch_request(url, patch_body)
+            #response = OOYALA::send_patch_request(url, patch_body)
             self.load(response) 
          end
 
