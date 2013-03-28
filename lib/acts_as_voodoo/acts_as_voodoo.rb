@@ -70,7 +70,7 @@ module Acts
       
       module InstanceMethods
          def update
-            patch_body          = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
+            patch_body          = encode
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }                   
             patch_hash          = ActiveSupport::JSON.decode(patch_body) 
             
@@ -90,7 +90,7 @@ module Acts
          end
 
          def create
-            post_body           = Helper::deroot(encode, ActiveSupport::Inflector.singularize( self.class.collection_name ))
+            post_body           = encode
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
             path                = "/v2/#{self.class.collection_name}" 
             params['signature'] = OOYALA::generate_signature( self.api_secret, "POST", path, params, post_body)
