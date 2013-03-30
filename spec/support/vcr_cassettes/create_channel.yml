@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1357059900&signature=ZnyJ/xNjOTR/MVWfy2Q4acaV2GMjXzb7dO1q2imgKI8
+    body:
+      encoding: US-ASCII
+      string: ! '{"asset_type":"channel","name":"new channel"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Sat, 30 Mar 2013 21:15:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 400 Bad Request
+      Ooyala-Server-Id:
+      - i-74e0a20c
+      Ooyala-Request-Id:
+      - 34b849359968ec20e0a25a21f62abef6
+    body:
+      encoding: US-ASCII
+      string: ! '{"message":"Request is expired."}'
+    http_version: 
+  recorded_at: Tue, 01 Jan 2013 17:00:00 GMT
+recorded_with: VCR 2.4.0

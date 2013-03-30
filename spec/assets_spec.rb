@@ -12,7 +12,7 @@ describe 'acts_as_voodoo for assets' do
   end
 
   before :all do
-    Timecop.freeze(Time.local(2013, 1, 1, 10, 0, 0))
+    Timecop.freeze(Time.local(2014, 1, 1, 10, 0, 0))
   end
 
   after :all do
@@ -26,7 +26,25 @@ describe 'acts_as_voodoo for assets' do
       new_channel.name       = "new channel"
       new_channel.save.should be_true
     end
-  end 
+  end
+
+  it "should update an existing video" do
+    video = nil
+
+    VCR.use_cassette('find_video') do
+      results = Asset.find(:one) do |vid|
+        vid.description == "Thor"
+        vid.duration > 600
+      end
+
+      video = results.first
+    end
+
+    VCR.use_cassette('update_video') do
+      video.name = "update name"
+      video.save.should be_true
+    end
+  end
 
   # TODO: FIX
   # delete by video embed code
