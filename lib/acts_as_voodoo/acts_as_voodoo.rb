@@ -103,7 +103,7 @@ module Acts
          def destroy
             params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
             params['signature'] = OOYALA::generate_signature( self.api_secret, "DELETE", element_path, params)
-binding.pry
+
             run_callbacks :destroy do
               connection.delete("#{element_path}?#{params.to_query}", self.class.headers)
             end
