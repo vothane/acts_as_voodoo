@@ -46,11 +46,19 @@ describe 'acts_as_voodoo for assets' do
     end
   end
 
-  # TODO: FIX
-  # delete by video embed code
-  xit "should delete a video" do
+  it "should delete a video" do
+    video = nil
+
+    VCR.use_cassette('find_video_to_delete') do
+      results = Asset.find(:one) do |vid|
+        vid.description == "Bootstrap"
+        vid.duration > 600
+      end
+
+      video = results.first
+    end
+
     VCR.use_cassette('delete_video') do
-      video = Asset.find('RzeGdxMzrD6xa0Vv1pm42qN3gHEVQLCR')
       video.destroy.should be_true
     end
   end

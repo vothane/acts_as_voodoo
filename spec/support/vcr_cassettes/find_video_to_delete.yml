@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=KuplgH28/2yV8Q8yn0SNkg+uilxP+YnrsG1Pxs7ul8o&where=description='Bootstrap'%20AND%20duration%3E600
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMS4yLjM=
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAzMCBNYXIgMjAxMyAyMjoyODoxNCBHTVQ=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        OTg5
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+      !binary "U3RhdHVz":
+      - !binary |-
+        MjAwIE9L
+      - !binary |-
+        MjAwIE9L
+      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kcw==":
+      - !binary |-
+        T1BUSU9OUywgR0VULCBQT1NULCBQVVQsIERFTEVURSwgUEFUQ0g=
+      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctQ3JlZGVudGlhbHM=":
+      - !binary |-
+        dHJ1ZQ==
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "WC1SYXRlbGltaXQtQ3JlZGl0cw==":
+      - !binary |-
+        Mjk5
+      !binary "WC1SYXRlbGltaXQtUmVzZXQ=":
+      - !binary |-
+        NjA=
+      !binary "T295YWxhLVNlcnZlci1JZA==":
+      - !binary |-
+        aS1kYjNjY2NiYyxpLTc0ZTBhMjBj
+      !binary "T295YWxhLVJlcXVlc3QtSWQ=":
+      - !binary |-
+        YTQ5NzAxM2M5YzZmMDBkNGJiYTljMWIzOTVhZTRhOGI=
+      !binary "WC1WYXJuaXNoLUlw":
+      - !binary |-
+        MTAuMjUxLjI0My4xNzU=
+      !binary "QWNjZXB0LVJhbmdlcw==":
+      - !binary |-
+        Ynl0ZXM=
+      !binary "WC1WYXJuaXNo":
+      - !binary |-
+        OTE3OTA5NDEw
+      !binary "Vmlh":
+      - !binary |-
+        MS4xIHZhcm5pc2g=
+      !binary "QWdl":
+      - !binary |-
+        MA==
+      !binary "WC1WYXJuaXNoLUNhY2hl":
+      - !binary |-
+        TUlTUw==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpdGVtcyI6W3siYXNzZXRfdHlwZSI6InZpZGVvIiwiY3JlYXRlZF9hdCI6
+        IjIwMTItMDMtMTBUMTk6NTQ6MjFaIiwiZGVzY3JpcHRpb24iOiJUd2l0dGVy
+        4oCZcyBCb290c3RyYXAgaGVscHMgeW91IGJ1aWxkIGJlYXV0aWZ1bCB3ZWIg
+        YXBwcyBxdWlja2x5LiBJdCBwcm92aWRlcyBhIHZhcmlldHkgb2YgQ1NTIGFu
+        ZCBKYXZhU2NyaXB0IGZvciBtYWtpbmcgbGF5b3V0cywgbmF2aWdhdGlvbiwg
+        Zm9ybXMgYW5kIGEgbG90IG1vcmUgYW5kIGl0IGV2ZW4gaW5jbHVkZXMgc3Vw
+        cG9ydCBmb3IgcmVzcG9uc2l2ZSB3ZWIgZGVzaWduLiBBcyBhbiBleGFtcGxl
+        LCBpZiB5b3UgdmlzaXQgVW5kZXIgdGhlIHNlYS4sIGFuZCBhbHRlciB0aGUg
+        d2lkdGggb2YgdGhlIGJyb3dzZXIgd2luZG93IHRoZSBwYWdlIGxheW91dCB3
+        aWxsIGNoYW5nZSB0byBiZXN0IGZpdCB0aGF0IHdpZHRoLiBUaGlzIGNhbiBy
+        ZWFsbHkgaW1wcm92ZSB0aGUgZXhwZXJpZW5jZSBvZiB1c2luZyB3ZWIgYXBw
+        bGljYXRpb25zIG9uIG1vYmlsZSBkZXZpY2VzLiIsImR1cmF0aW9uIjo2MTE4
+        MjIsImVtYmVkX2NvZGUiOiI1MGMyZHhNenJQdmRvNkdxczlNU280bG8zSlJE
+        UURociIsImV4dGVybmFsX2lkIjpudWxsLCJuYW1lIjoiUmFpbHNDYXN0IC0g
+        VHdpdHRlcuKAmXMgQm9vdHN0cmFwIiwicHJldmlld19pbWFnZV91cmwiOiJo
+        dHRwOi8vYWsuYy5vb3lhbGEuY29tLzUwYzJkeE16clB2ZG82R3FzOU1TbzRs
+        bzNKUkRRRGhyL1hBaklFMldsdzF4SDlsSjM1aE1Eb3hPakJoTzJZV2FyIiwi
+        c3RhdHVzIjoibGl2ZSIsInRpbWVfcmVzdHJpY3Rpb25zIjpudWxsLCJ1cGRh
+        dGVkX2F0IjoiMjAxMi0wMy0xMFQyMDozODozN1oiLCJob3N0ZWRfYXQiOm51
+        bGwsIm9yaWdpbmFsX2ZpbGVfbmFtZSI6IjMyOC10d2l0dGVyLWJvb3RzdHJh
+        cC1iYXNpY3MubXA0IiwicHVibGlzaGluZ19ydWxlX2lkIjoiMzdhYTczNzFi
+        ZTRmNDkzN2I0MGJiMTI5NjZmMjgyMzUiLCJhZF9zZXRfaWQiOm51bGx9XX0=
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0
