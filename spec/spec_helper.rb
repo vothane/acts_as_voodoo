@@ -19,8 +19,6 @@ RSpec.configure do |config|
   config.formatter = :documentation # :progress, :html, :textmate  
 
   config.mock_with :rspec  
-
-  config.extend VCR::RSpec::Macros
 end
 
 VCR.configure do |c|
