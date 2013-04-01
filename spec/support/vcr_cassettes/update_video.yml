@@ -2,15 +2,15 @@
 http_interactions:
 - request:
     method: patch
-    uri: https://api.ooyala.com/v2/assets/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=UVGAUvO3frC1n4xEY32L/qPk56n8ZeNESnNGFblzQPQ
+    uri: https://api.ooyala.com/v2/assets/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=wzrnp3t/iPn87xj0FzzZYyiTdDXXNrwWKyq2NTs3cVQ
     body:
       encoding: US-ASCII
       string: ! '{"asset_type":"video","description":"The warrior Thor is cast out
         of the fantastic realm of Asgard by his father Odin for his arrogance and
         sent to Earth to live among humans. Falling in love with scientist Jane Foster
         teaches Thor much-needed lessons, and his new-found strength comes into play
-        as a villain from his homeland sends dark forces toward Earth.","external_id":null,"name":"update
-        name","preview_image_url":"http://ak.c.ooyala.com/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE/NWfthdhQfIbl_yb35hMDoxOmdjOz0ndz","status":"live","time_restrictions":null,"hosted_at":null,"original_file_name":"Thor
+        as a villain from his homeland sends dark forces toward Earth.","external_id":null,"name":"Hear
+        Me Roar!","preview_image_url":"http://ak.c.ooyala.com/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE/NWfthdhQfIbl_yb35hMDoxOmdjOz0ndz","status":"live","time_restrictions":null,"hosted_at":null,"original_file_name":"Thor
         - Official Trailer HD 1080p.flv","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}'
     headers:
       Content-Type:
@@ -25,13 +25,11 @@ http_interactions:
       message: OK
     headers:
       Server:
-      - nginx/1.2.3
+      - nginx/1.0.0
       Date:
-      - Sat, 30 Mar 2013 21:23:58 GMT
+      - Mon, 01 Apr 2013 21:44:21 GMT
       Content-Type:
       - application/json;charset=utf-8
-      Content-Length:
-      - '840'
       Connection:
       - keep-alive
       Status:
@@ -43,14 +41,16 @@ http_interactions:
       - 'true'
       Cache-Control:
       - no-cache
+      Content-Length:
+      - '842'
       X-Ratelimit-Credits:
       - '298'
       X-Ratelimit-Reset:
       - '57'
       Ooyala-Server-Id:
-      - i-1d0f1d7b,i-f0e3a188
+      - i-59f70937,i-38e3a140
       Ooyala-Request-Id:
-      - 2712afb3d6005ee9a0cbe809099951a1
+      - fc0111e228cd64271a5e344cefe04f2a
     body:
       encoding: US-ASCII
       string: ! '{"asset_type":"video","created_at":"2012-03-10T19:41:31Z","description":"The
@@ -58,8 +58,8 @@ http_interactions:
         for his arrogance and sent to Earth to live among humans. Falling in love
         with scientist Jane Foster teaches Thor much-needed lessons, and his new-found
         strength comes into play as a villain from his homeland sends dark forces
-        toward Earth.","duration":152000,"embed_code":"xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE","external_id":null,"name":"update
-        name","preview_image_url":"http://ak.c.ooyala.com/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE/NWfthdhQfIbl_yb35hMDoxOmdjOz0ndz","status":"live","time_restrictions":null,"updated_at":"2013-03-30T21:23:58Z","hosted_at":null,"original_file_name":"Thor
+        toward Earth.","duration":152000,"embed_code":"xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE","external_id":null,"name":"Hear
+        Me Roar!","preview_image_url":"http://ak.c.ooyala.com/xqaWdxMzrd-3vtTxXCDPFFouLEw6z_uE/NWfthdhQfIbl_yb35hMDoxOmdjOz0ndz","status":"live","time_restrictions":null,"updated_at":"2013-04-01T21:44:21Z","hosted_at":null,"original_file_name":"Thor
         - Official Trailer HD 1080p.flv","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}'
     http_version: 
   recorded_at: Wed, 01 Jan 2014 17:00:00 GMT

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.ooyala.com/v2/assets/50c2dxMzrPvdo6Gqs9MSo4lo3JRDQDhr?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=5qlaJJYgkZgIFbyk0m35ICqFZtyR1YXRxJq6vmlm9Z4
+    uri: https://api.ooyala.com/v2/assets/NjdmdxMzqDvaUEEczxwMbG4aC4tpJaKB?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=6cti1s37MaVg+zr9NvA9ZNNig1iEvQk7wT2Y6QjCLqk
     body:
       encoding: US-ASCII
       string: ''
@@ -17,13 +17,11 @@ http_interactions:
       message: OK
     headers:
       Server:
-      - nginx/1.2.3
+      - nginx/1.0.0
       Date:
-      - Sat, 30 Mar 2013 22:30:10 GMT
+      - Mon, 01 Apr 2013 21:30:05 GMT
       Content-Type:
       - application/json;charset=utf-8
-      Content-Length:
-      - '0'
       Connection:
       - keep-alive
       Status:
@@ -35,14 +33,16 @@ http_interactions:
       - 'true'
       Cache-Control:
       - no-cache
+      Content-Length:
+      - '0'
       X-Ratelimit-Credits:
-      - '299'
+      - '297'
       X-Ratelimit-Reset:
-      - '60'
+      - '54'
       Ooyala-Server-Id:
-      - i-8480e0fe,i-90e3a1e8
+      - i-1e80e064,i-90e3a1e8
       Ooyala-Request-Id:
-      - 3a09af6eaf1b03791110a782c27d7d7e
+      - e4a21552f6ebf9af486f8546a4986723
     body:
       encoding: US-ASCII
       string: ''
