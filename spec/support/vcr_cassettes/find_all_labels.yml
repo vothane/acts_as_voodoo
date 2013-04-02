@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=ylCha9pRjzxdjaOob3cb6J0GzFyYqOSodsmBQ7hdJ6w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Tue, 02 Apr 2013 21:31:57 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '298'
+      X-Ratelimit-Reset:
+      - '58'
+      Ooyala-Server-Id:
+      - i-c080e0ba,i-f0e3a188
+      Ooyala-Request-Id:
+      - 7facf3bc470f6f597eb836bfdcf015af
+      X-Varnish-Ip:
+      - 10.251.243.175
+      Content-Length:
+      - '336'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '931635978'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"name":"Movie Trailer","full_name":"/Movie Trailer","id":"b5e9bf9a0e5a4b31991cfdf9218c4342","parent_id":null},{"name":"new
+        label","full_name":"/new label","id":"afac54696d684e9cad29f4207f286e72","parent_id":null},{"name":"TV
+        Commercial","full_name":"/TV Commercial","id":"3329684004c444d3b7b03707dcdaf7d0","parent_id":null}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0

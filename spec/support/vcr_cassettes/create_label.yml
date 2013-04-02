@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.ooyala.com/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=zMdUFUVOtCiosp4HeqLGv+oDrG+sWRWZrOF3t8VYWLk
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"new label"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Tue, 02 Apr 2013 21:31:55 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '102'
+      X-Ratelimit-Credits:
+      - '299'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Server-Id:
+      - i-59f70937,i-38e3a140
+      Ooyala-Request-Id:
+      - 621d4bf36d165fe090ccc0e9dcdd1fca
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"new label","full_name":"/new label","id":"afac54696d684e9cad29f4207f286e72","parent_id":null}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0
