@@ -20,7 +20,7 @@ describe 'acts_as_voodoo for assets' do
   end
 
   context "when assets are videos" do
-    context "when updating an attrbute of an existing video" do
+    context "when updating an attribute of an existing video" do
       
       let(:video) do
         VCR.use_cassette('find_video') do
@@ -79,13 +79,35 @@ describe 'acts_as_voodoo for assets' do
   end
 
   context "when assets are channels" do
-    it "should create a new channel" do
-      new_channel            = Asset.new
-      new_channel.asset_type = "channel"
-      new_channel.name       = "new channel"
+    context "when creating new channels" do
 
-      VCR.use_cassette('create_channel') do
-        new_channel.save.should be_true
+      let(:new_channel) do
+        channel            = Asset.new
+        channel.asset_type = "channel"
+        channel.name       = "new channel"
+        channel
+      end
+
+      it "should create a new channel" do
+        VCR.use_cassette('create_channel') do
+          new_channel.save.should be_true
+        end
+      end
+    end
+
+    context "when udating an existing channel attributes" do
+
+      let(:new_channel) do
+        channel            = Asset.new
+        channel.asset_type = "channel"
+        channel.name       = "new channel"
+        channel
+      end
+
+      it "should create a new channel" do
+        VCR.use_cassette('create_channel') do
+          new_channel.save.should be_true
+        end
       end
     end
   end  
