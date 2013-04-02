@@ -94,21 +94,5 @@ describe 'acts_as_voodoo for assets' do
         end
       end
     end
-
-    context "when udating an existing channel attributes" do
-
-      let(:new_channel) do
-        channel            = Asset.new
-        channel.asset_type = "channel"
-        channel.name       = "new channel"
-        channel
-      end
-
-      it "should create a new channel" do
-        VCR.use_cassette('create_channel') do
-          new_channel.save.should be_true
-        end
-      end
-    end
   end  
 end 
