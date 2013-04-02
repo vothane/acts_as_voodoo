@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=K5IDJH8X4ioTaqt3KmuJjnbulUz3sGy84js3ik/rkEk&where=labels%20INCLUDES%20'TV%20Commercial'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Tue, 02 Apr 2013 22:31:55 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '296'
+      X-Ratelimit-Reset:
+      - '54'
+      Ooyala-Server-Id:
+      - i-877134f6,i-90e3a1e8
+      Ooyala-Request-Id:
+      - 75e432e897cad7c2d9de234c7e173416
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Content-Length:
+      - '919'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '2553932004'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"asset_type":"ad","created_at":"2012-03-10T20:44:30Z","description":"Darth
+        Vader''s iconic status has made the character a synonym for evil in popular
+        culture; psychiatrists have even considered him as a useful example to explain
+        borderline personality disorder to medical students. The character has gained
+        much positive reception as a classic film villain. BADASS.","duration":61583,"embed_code":"84d2hxMzoDdGIIc1aciS20lsB3OMox0S","external_id":null,"name":"The
+        Force Volkswagen Commercial","preview_image_url":"http://ak.c.ooyala.com/84d2hxMzoDdGIIc1aciS20lsB3OMox0S/LHp2csp3BVpxnnKX5hMDoxOm1xO-1jSC","status":"live","time_restrictions":null,"updated_at":"2012-03-10T20:48:50Z","hosted_at":null,"original_file_name":"The
+        Force_ Volkswagen Commercial.flv","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null,"click_url":"","tracking_pixel_urls":[],"disable_seek_for_standalone":false}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0

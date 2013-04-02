@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=xJyER/Xm5aVbnNCrcTBv86wVLwkVEzNWvoKrdJeI5TI&where=embed_code%20IN%20('U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Tue, 02 Apr 2013 22:31:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '297'
+      X-Ratelimit-Reset:
+      - '56'
+      Ooyala-Server-Id:
+      - i-c080e0ba,i-90e3a1e8
+      Ooyala-Request-Id:
+      - 8252b1487836a8fd308f87025e172c4d
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Content-Length:
+      - '987'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '2553931920'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"asset_type":"video","created_at":"2012-03-10T19:26:28Z","description":"As
+        World War II comes to an end in 1945, Hans Kammler and other German scientists
+        make a breakthrough in anti-gravity research. From a secret base in the Antarctic,
+        Nazi spaceships are sent to the \"dark side\" of the Moon to establish the
+        military base \"Schwarze Sonne\" (i.e. Black Sun). Their plan is to build
+        a powerful fleet and return to conquer Earth. The film is set in the year
+        2018 when their descendants finally return.","duration":113875,"embed_code":"U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9","external_id":null,"name":"Iron
+        Sky","preview_image_url":"http://ak.c.ooyala.com/U3NmdxMzrJe_3B_8VLs1ZlrlIJfSID-9/2c0YxGwJFvMxVXlX5hMDoxOmFkO7UOTK","status":"live","time_restrictions":null,"updated_at":"2012-03-10T20:37:35Z","hosted_at":null,"original_file_name":"Iron
+        Sky Official Trailer #2 - Nazi_s on the Moon Movie (201.flv","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0
