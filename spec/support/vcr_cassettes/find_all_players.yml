@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/players?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=zHJWVwjMLQKf3yx7%2BqJTdZwU49Yb0GHM971Zumic1hA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 08 Apr 2013 21:44:11 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '298'
+      X-Ratelimit-Reset:
+      - '58'
+      Ooyala-Server-Id:
+      - i-1d0f1d7b,i-90e3a1e8
+      Ooyala-Request-Id:
+      - 65e6270465dd847bcae43d524ef04aca
+      X-Varnish-Ip:
+      - 10.251.243.175
+      Content-Length:
+      - '5063'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '960462631'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"id":"46748c8b4fd34e439aa6893a3fe5e203","name":"test player","is_default":false,"provider_homepage_url":null,"provider_name":null,"default_closed_caption_language":"","watermark":{"alpha":1.0,"click_url":null,"image_url":null},"scrubber":{"always_show":false,"image_url":null},"playback":{"buffer_on_pause":false},"ooyala_branding":{"accent_color":"#ffbb00","digg_sharing":false,"stumble_upon_sharing":false,"facebook_sharing":false,"twitter_sharing":false,"email_sharing":true,"url_sharing":false,"show_ad_countdown":true,"show_info_button":true,"show_embed_button":true,"show_channel_button":true,"show_share_button":true,"show_bitrate_button":false,"show_volume_button":true,"show_info_screen_title":true,"show_info_screen_description":false,"show_info_screen_homepage_link":true,"show_info_screen_presented_by":true,"show_end_screen_replay_button":true,"show_end_screen_share_button":true,"show_end_screen_info_button":false,"show_end_screen_more_videos":true,"show_end_screen_embed_button":true,"enable_error_screen":true,"chromeless":false},"related_videos":{"source":"shared_labels","labels":[],"sort":"upload_time","order":"desc","click_behavior":"new_page"},"up_next_preview":{"timing":"disabled","seconds_before_end":null},"audio":{"show_download":true}},{"id":"718720520c141eab49a7044f3a3f9fe","name":"Social
+        Player","is_default":false,"provider_homepage_url":"","provider_name":"","default_closed_caption_language":"","watermark":{"alpha":1.0,"click_url":null,"image_url":null},"scrubber":{"always_show":false,"image_url":null},"playback":{"buffer_on_pause":false},"ooyala_branding":{"accent_color":"#ffbb00","digg_sharing":true,"stumble_upon_sharing":false,"facebook_sharing":true,"twitter_sharing":true,"email_sharing":true,"url_sharing":true,"show_ad_countdown":true,"show_info_button":true,"show_embed_button":true,"show_channel_button":true,"show_share_button":true,"show_bitrate_button":false,"show_volume_button":true,"show_info_screen_title":true,"show_info_screen_description":false,"show_info_screen_homepage_link":true,"show_info_screen_presented_by":true,"show_end_screen_replay_button":true,"show_end_screen_share_button":true,"show_end_screen_info_button":false,"show_end_screen_more_videos":true,"show_end_screen_embed_button":true,"enable_error_screen":true,"chromeless":false},"related_videos":{"source":"shared_labels","labels":[],"sort":"upload_time","order":"desc","click_behavior":"new_page"},"up_next_preview":{"timing":"disabled","seconds_before_end":null},"audio":{"show_download":true}},{"id":"2d3b575ba9314533ac92b0705a912a3d","name":"new
+        player","is_default":false,"provider_homepage_url":null,"provider_name":null,"default_closed_caption_language":"","watermark":{"alpha":1.0,"click_url":null,"image_url":null},"scrubber":{"always_show":false,"image_url":null},"playback":{"buffer_on_pause":false},"ooyala_branding":{"accent_color":"#ffbb00","digg_sharing":false,"stumble_upon_sharing":false,"facebook_sharing":false,"twitter_sharing":false,"email_sharing":true,"url_sharing":false,"show_ad_countdown":true,"show_info_button":true,"show_embed_button":true,"show_channel_button":true,"show_share_button":true,"show_bitrate_button":false,"show_volume_button":true,"show_info_screen_title":true,"show_info_screen_description":false,"show_info_screen_homepage_link":true,"show_info_screen_presented_by":true,"show_end_screen_replay_button":true,"show_end_screen_share_button":true,"show_end_screen_info_button":false,"show_end_screen_more_videos":true,"show_end_screen_embed_button":true,"enable_error_screen":true,"chromeless":false},"related_videos":{"source":"shared_labels","labels":[],"sort":"upload_time","order":"desc","click_behavior":"new_page"},"up_next_preview":{"timing":"disabled","seconds_before_end":null},"audio":{"show_download":true}},{"id":"NDY2MTE5OTY2NjMwMDVkOTExNTU4ZDAz","name":"Default
+        player","is_default":true,"provider_homepage_url":"","provider_name":"","default_closed_caption_language":"","watermark":{"alpha":1.0,"click_url":null,"image_url":null},"scrubber":{"always_show":false,"image_url":null},"playback":{"buffer_on_pause":false},"ooyala_branding":{"accent_color":"#ffbb00","digg_sharing":false,"stumble_upon_sharing":false,"facebook_sharing":false,"twitter_sharing":false,"email_sharing":true,"url_sharing":true,"show_ad_countdown":true,"show_info_button":true,"show_embed_button":true,"show_channel_button":true,"show_share_button":true,"show_bitrate_button":false,"show_volume_button":true,"show_info_screen_title":true,"show_info_screen_description":false,"show_info_screen_homepage_link":true,"show_info_screen_presented_by":true,"show_end_screen_replay_button":true,"show_end_screen_share_button":true,"show_end_screen_info_button":true,"show_end_screen_more_videos":true,"show_end_screen_embed_button":true,"enable_error_screen":true,"chromeless":false},"related_videos":{"source":"shared_labels","labels":[],"sort":"upload_time","order":"desc","click_behavior":"new_page"},"up_next_preview":{"timing":"disabled","seconds_before_end":null},"audio":{"show_download":true}}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.ooyala.com/v2/players/2d3b575ba9314533ac92b0705a912a3d?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=S7%2B45LqbK3aiplEy0R%2Bkynm6LDBAFu4t1OpujBuz%2BKA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Mon, 08 Apr 2013 21:44:13 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '0'
+      X-Ratelimit-Credits:
+      - '297'
+      X-Ratelimit-Reset:
+      - '56'
+      Ooyala-Server-Id:
+      - i-db3cccbc,i-f0e3a188
+      Ooyala-Request-Id:
+      - 2095dc3a9b41729a8b4ba3c38d494a64
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Wed, 01 Jan 2014 17:00:00 GMT
+recorded_with: VCR 2.4.0
