@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.ooyala.com/v2/labels/afac54696d684e9cad29f4207f286e72?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=4EBebeAWY9kuPEVZlynco6bJojGyXORi75onsuEkBZk
+    uri: https://api.ooyala.com/v2/labels/635bad2cbbce49778ccda721dd143a56?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1388595900&signature=G4UIMmbiRsmxmN6mRDZivLywKKacHbOqM2Ko+POEeeo
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.0.0
       Date:
-      - Tue, 02 Apr 2013 21:31:59 GMT
+      - Thu, 18 Apr 2013 22:53:44 GMT
       Content-Type:
       - application/json;charset=utf-8
       Connection:
@@ -36,13 +36,13 @@ http_interactions:
       Content-Length:
       - '0'
       X-Ratelimit-Credits:
-      - '297'
+      - '296'
       X-Ratelimit-Reset:
-      - '57'
+      - '45'
       Ooyala-Server-Id:
-      - i-7fc8b20e,i-90e3a1e8
+      - i-2fb35657,i-74e0a20c
       Ooyala-Request-Id:
-      - 7cb4ac2b54f86258aa1bad0567dcd0f2
+      - d59699107cf782e64a6f3f30ff3faf0f
     body:
       encoding: US-ASCII
       string: ''
