@@ -14,8 +14,7 @@ module Acts
 
             class << self
                def find_with_voodoo(*args, &block)
-                binding.pry
-                  find_without_voodoo(:all, OOYALA::find_params(*args, self, &block))
+                  find_without_voodoo(:all, find_params(*args, &block))
                end
 
                alias_method :find_without_voodoo, :find
@@ -38,6 +37,35 @@ module Acts
 
                alias_method :element_path_without_voodoo, :element_path
                alias_method :element_path, :element_path_with_voodoo
+
+              def find_params(*args, &block)
+                scope        = args.slice!(0)
+                scope        = :all if scope.instance_of? Integer
+                options      = args.slice!(0)
+                path         = "/v2/#{collection_name}"
+                path         = "#{path}/#{scope}" if scope.instance_of? String
+                this_params  = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
+
+                if block_given?
+                   conditions = Query::Conditions.new(&block)
+
+                   this_params.merge(options) if options.instance_of? Hash
+                   this_params['where']     = conditions.to_where_conditions
+                   this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
+                   return this_params
+                else   
+                  if options && options[:from]
+                    this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", "#{path}#{options[:from]}", this_params)
+                    return this_params
+                  elsif options
+                    this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params)
+                    return this_params
+                  else
+                    this_params['signature'] = OOYALA::generate_signature( self.api_secret, "GET", path, this_params)
+                    return this_params
+                  end
+                end
+              end  
             end
             include InstanceMethods
          end

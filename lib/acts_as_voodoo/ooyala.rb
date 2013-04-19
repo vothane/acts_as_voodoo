@@ -31,18 +31,18 @@ module OOYALA
 
        this_params.merge(options) if options.instance_of? Hash
        this_params['where']     = conditions.to_where_conditions
-       this_params['signature'] = OOYALA::generate_signature(self.api_secret, "GET", path, this_params, nil)
-       return this_params
+       this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", path, this_params, nil )
+       return { :params => this_params }
     else   
       if options && options[:from]
         this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", "#{path}#{options[:from]}", this_params)
-        return this_params
+        return { :from => "#{path}#{options[:from]}", :params => this_params }
       elsif options
-        this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", path, this_params)
-        return this_params
+        this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", path, this_params )
+        return this_params.merge({:params => options})
       else
-        this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", path, this_params)
-        return this_params
+        this_params['signature'] = OOYALA::generate_signature( asset.api_secret, "GET", path, this_params ) 
+        return { :params => this_params }
       end
     end
   end  
