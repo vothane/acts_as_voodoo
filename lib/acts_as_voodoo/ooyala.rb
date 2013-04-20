@@ -48,6 +48,7 @@ class Parameters
     @this_params.merge(options) if @options.instance_of? Hash
     @this_params['where']     = conditions.to_where_conditions
     @this_params['signature'] = OOYALA::generate_signature( @asset.api_secret, "GET", @path, @this_params, nil )
+    return { :params => @this_params }
   end
 
   def params_without_block
