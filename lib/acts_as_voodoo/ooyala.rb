@@ -33,6 +33,9 @@ module OOYALA
   end  
 end
 
+class Credentials < OpenStruct
+end
+
 class Parameters
   def initialize(*args, asset)
     @asset       = asset
@@ -41,25 +44,25 @@ class Parameters
     @options     = args.slice!(0)
     @path        = "/v2/#{@asset.collection_name}"
     @path        = "#{@path}/#{@scope}" if @scope.instance_of? String
-    @this_params = { 'api_key' => @asset.api_key, 'expires' => OOYALA::expires }
+    @this_params = { 'api_key' => @asset.credentials.api_key, 'expires' => OOYALA::expires }
   end
 
   def params_with_block(conditions)
     @this_params.merge(options) if @options.instance_of? Hash
     @this_params['where']     = conditions.to_where_conditions
-    @this_params['signature'] = OOYALA::generate_signature( @asset.api_secret, "GET", @path, @this_params, nil )
+    @this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", @path, @this_params, nil )
     return { :params => @this_params }
   end
 
   def params_without_block
     if @options && @options[:from]
-      @this_params['signature'] = OOYALA::generate_signature( @asset.api_secret, "GET", "#{@path}#{@options[:from]}", @this_params)
+      @this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", "#{@path}#{@options[:from]}", @this_params)
       return { :from => "#{@path}#{@options[:from]}", :params => @this_params }
     elsif @options
-      @this_params['signature'] = OOYALA::generate_signature( @asset.api_secret, "GET", @path, @this_params )
+      @this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", @path, @this_params )
       return @this_params.merge({:params => @options})
     else
-      @this_params['signature'] = OOYALA::generate_signature( @asset.api_secret, "GET", @path, @this_params )
+      @this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", @path, @this_params )
       return { :params => @this_params }
     end
   end

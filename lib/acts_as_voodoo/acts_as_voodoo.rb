@@ -6,11 +6,9 @@ module Acts
 
       module ClassMethods
          def acts_as_voodoo(credentials = { })
-            cattr_accessor :api_key
-            self.api_key = credentials[:api_key]
-            cattr_accessor :api_secret
-            self.api_secret = credentials[:api_secret]
-            @primary_key = 'embed_code' if element_name == 'asset'
+            cattr_accessor :credentials
+            self.credentials = Credentials.new(api_key:    credentials[:api_key],
+                                               api_secret: credentials[:api_secret])
 
             class << self
                def find_with_voodoo(*args, &block)

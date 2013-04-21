@@ -63,7 +63,7 @@ describe 'acts_as_voodoo for assets' do
       let(:video_to_be_deleted) do  
         VCR.use_cassette('find_video_to_delete') do
           results = Asset.find(:one) do |vid|
-            vid.description == "Mongoid"
+            vid.description == "Under the sea."
             vid.duration > 600
           end
           results.first
