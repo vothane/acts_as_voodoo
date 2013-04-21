@@ -6,35 +6,30 @@ module Acts
 
       module ClassMethods
          def acts_as_voodoo(credentials = { })
+            @primary_key = 'embed_code' if element_name == 'asset'
             cattr_accessor :credentials
-            self.credentials = Credentials.new(api_key:    credentials[:api_key],
-                                               api_secret: credentials[:api_secret])
+            self.credentials = Credentials.new(api_key: credentials[:api_key], api_secret: credentials[:api_secret])
 
             class << self
                def find_with_voodoo(*args, &block)
                   find_without_voodoo(:all, OOYALA::find_params(*args, self, &block))
                end
-
-               alias_method :find_without_voodoo, :find
-               alias_method :find, :find_with_voodoo
+               alias_method_chain :find, :voodoo
 
                def collection_path_with_voodoo(prefix_options = { }, query_options = nil)
                   check_prefix_options(prefix_options)
                   prefix_options, query_options = split_options(prefix_options) if query_options.nil?
                   "#{prefix(prefix_options)}#{collection_name}#{query_string(query_options)}"
                end
-
-               alias_method :collection_path_without_voodoo, :collection_path
-               alias_method :collection_path, :collection_path_with_voodoo
+               alias_method_chain :collection_path, :voodoo
 
                def element_path_with_voodoo(id, prefix_options = {}, query_options = nil)
                   check_prefix_options(prefix_options)
                   prefix_options, query_options = split_options(prefix_options) if query_options.nil?
                   "#{prefix(prefix_options)}#{collection_name}/#{URI.parser.escape id.to_s}#{query_string(query_options)}"
                end
+               alias_method_chain :element_path, :voodoo
 
-               alias_method :element_path_without_voodoo, :element_path
-               alias_method :element_path, :element_path_with_voodoo
             end
             include InstanceMethods
          end
