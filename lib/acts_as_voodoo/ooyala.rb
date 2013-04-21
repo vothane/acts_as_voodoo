@@ -24,32 +24,25 @@ module OOYALA
     find_params = Parameters.new(*args, asset)
 
     if block_given?
-       conditions = Query::Conditions.new(&block)
-       return find_params.params_with_block(conditions)
+      conditions = Query::Conditions.new(&block)
+      return find_params.params_with_block(conditions)
     else
       return find_params.params_without_block
     end
 
   end
 
-  def self.update_params(*args, asset, body)
-
+  def self.update_params(*args, asset)
     update_params = Parameters.new(*args, asset)
-
-    patch_body          = encode
-    params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-    patch_hash          = ActiveSupport::JSON.decode(patch_body)
-
-    patch_hash.delete_if { |key, value| ['created_at', 'updated_at', 'embed_code', 'id', 'duration', 'parent_id'].include? key.to_s }
-
-    patch_body          = ActiveSupport::JSON.encode(patch_hash)
-    path                = "/v2/#{self.class.collection_name}/#{id}"
-    params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", "#{path}", params, patch_body )
+    return Generic.new( url: update_params.params_for_update, body: update_params.body_for_update )
   end
 
 end
 
 class Credentials < OpenStruct
+end
+
+class Generic < OpenStruct
 end
 
 class Parameters
@@ -83,8 +76,15 @@ class Parameters
     end
   end
 
+  def params_for_update
+    params              = self.parametrize_credentials
+    path                = "/v2/#{@asset.class.collection_name}/#{@asset.id}"
+    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "PATCH", "#{path}", params, self.body_for_update)
+    "#{path}?#{params.to_query}"
+  end
+
   def find_scope
-    scope = @args.slice!(0)
+    scope = @args.slice(0)
     scope = :all if scope.instance_of? Integer
     scope
   end
@@ -98,6 +98,14 @@ class Parameters
 
   def find_options
     @args.slice(1)
+  end
+
+  def body_for_update
+    patch_body = @args.slice(0)
+    patch_hash = ActiveSupport::JSON.decode(patch_body)
+    patch_hash.delete_if { |key, value| ['created_at', 'updated_at', 'embed_code', 'id', 'duration', 'parent_id'].include? key.to_s }
+    body = ActiveSupport::JSON.encode(patch_hash)
+    body
   end
 
   def parametrize_credentials

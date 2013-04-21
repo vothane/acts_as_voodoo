@@ -38,13 +38,12 @@ module Acts
       module InstanceMethods
 
          def update
-
+            params = OOYALA::update_params(encode, self)
             run_callbacks :update do
-              connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
+              connection.patch(params.url, params.body, self.class.headers).tap do |response|
                 load_attributes_from_response(response)
               end
             end
-
          end
 
          def create
