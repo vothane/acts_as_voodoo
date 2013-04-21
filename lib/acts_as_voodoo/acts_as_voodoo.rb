@@ -47,14 +47,12 @@ module Acts
          end
 
          def create
-            post_body           = encode
-            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            path                = "/v2/#{self.class.collection_name}"
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "POST", path, params, post_body)
-
-            connection.post("#{path}?#{params.to_query}", post_body, self.class.headers).tap do |response|
-               self.id = id_from_response(response)
-               load_attributes_from_response(response)
+            params = OOYALA::create_params(encode, self)
+            run_callbacks :create do
+              connection.post(params.url, params.body, self.class.headers).tap do |response|
+                self.id = id_from_response(response)
+                load_attributes_from_response(response)
+              end
             end
          end
 

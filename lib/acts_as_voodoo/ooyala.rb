@@ -33,8 +33,13 @@ module OOYALA
   end
 
   def self.update_params(*args, asset)
-    update_params = Parameters.new(*args, asset)
-    return Generic.new( url: update_params.params_for_update, body: update_params.body_for_update )
+    params = Parameters.new(*args, asset)
+    return Generic.new( url: params.params_for_update, body: params.body_for_update )
+  end
+
+  def self.create_params(*args, asset)
+    params = Parameters.new(*args, asset)
+    return Generic.new( url: params.params_for_create, body: params.body_for_create )
   end
 
 end
@@ -83,6 +88,13 @@ class Parameters
     "#{path}?#{params.to_query}"
   end
 
+  def params_for_create
+    params              = self.parametrize_credentials
+    path                = "/v2/#{@asset.class.collection_name}"
+    params['signature'] = OOYALA::generate_signature(  @asset.credentials.api_secret, "POST", path, params, self.body_for_create)
+    "#{path}?#{params.to_query}"
+  end
+
   def find_scope
     scope = @args.slice(0)
     scope = :all if scope.instance_of? Integer
@@ -106,6 +118,10 @@ class Parameters
     patch_hash.delete_if { |key, value| ['created_at', 'updated_at', 'embed_code', 'id', 'duration', 'parent_id'].include? key.to_s }
     body = ActiveSupport::JSON.encode(patch_hash)
     body
+  end
+
+  def body_for_create
+    @args.slice(0)
   end
 
   def parametrize_credentials
