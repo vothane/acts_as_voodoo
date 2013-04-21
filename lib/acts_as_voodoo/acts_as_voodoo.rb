@@ -38,21 +38,13 @@ module Acts
       module InstanceMethods
 
          def update
-            patch_body          = encode
-            params              = { 'api_key' => self.api_key, 'expires' => OOYALA::expires }
-            patch_hash          = ActiveSupport::JSON.decode(patch_body)
-
-            patch_hash.delete_if { |key, value| ['created_at', 'updated_at', 'embed_code', 'id', 'duration', 'parent_id'].include? key.to_s }
-
-            patch_body          = ActiveSupport::JSON.encode(patch_hash)
-            path                = "/v2/#{self.class.collection_name}/#{id}"
-            params['signature'] = OOYALA::generate_signature( self.api_secret, "PATCH", "#{path}", params, patch_body )
 
             run_callbacks :update do
               connection.patch("#{path}?#{params.to_query}", patch_body, self.class.headers).tap do |response|
                 load_attributes_from_response(response)
               end
             end
+
          end
 
          def create
