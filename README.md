@@ -7,6 +7,12 @@ This is a Ruby wrapper for the [OOYALA V2 API](http://api.ooyala.com/docs/v2) AP
 
 It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like syntax, i.e.:
 
+## Requirements
+
+- Ruby 1.9.3 or greater
+- ActiveResource 4.0.0.beta1 or greater
+- ActiveSupport  4.0.0.beta1 or greater
+
 ``` ruby
 class Asset < ActiveResource::Base
    my_api_key    = '<API KEY HERE>'
@@ -46,13 +52,33 @@ A sample query might look like:
 So using acts_as_voodoo, you would do this
 
 ``` ruby
-results = Asset.find(:one) do |vid|
+results = Asset.find(:first) do |vid|
    vid.description == "Under the sea."
    vid.duration > 600
 end
 ```
 
 ### Query API Examples
+
+> For scopes, you can use :all, :first, :last. 
+> :one is not working as of now
+> scopes of integer id values are not recognized by the API. Use embed codes in place of integer IDs.
+> 
+> Note: 
+> :all will give an array of AR instances.
+> :first or :last will give an instance of AR.
+
+Find all assets.
+
+``` ruby
+Asset.all
+```
+
+Find a single asset by name.
+
+``` ruby
+Asset.find(:first) { |vid| vid.name == "Iron Sky" }
+```
 
 The first 5 movies where the description is "Under the sea." that are greater than ten minutes long. The videos are ordered by created_at in ascending order.
 
@@ -75,7 +101,7 @@ SELECT * WHERE embed_code IN ('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi',
 /v2/assets?where=embed_code IN ('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')
 
 ``` ruby
-results = Asset.find(:one) do |vid|
+results = Asset.find(:first) do |vid|
    vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')"
 end
 ```
