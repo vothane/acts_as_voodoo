@@ -62,7 +62,8 @@ end
 
 > For scopes, you can use `:all`, `:first`, `:last`. 
 >
-> `:one` is not working as of now
+> `:one` is not working as of now.
+>
 > scopes of integer id values are not recognized by the API. Use embed codes in place of integer IDs.
 > 
 > Note: 
