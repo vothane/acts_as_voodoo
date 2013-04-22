@@ -82,6 +82,12 @@ Find a single asset by name.
 Asset.find(:first) { |vid| vid.name == "Iron Sky" }
 ```
 
+Find a single asset by embed code.
+
+``` ruby
+Asset.find('9nbnkwYjqofX8NsCm9vISLV6iJ6bRZod')
+```
+
 The first 5 movies where the description is "Under the sea." that are greater than ten minutes long. The videos are ordered by created_at in ascending order.
 
 SELECT * WHERE description = 'Under the sea.' AND duration > 600 ORDER BY created_at descending
