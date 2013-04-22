@@ -12,7 +12,7 @@ module Acts
 
             class << self
                def find_with_voodoo(*args, &block)
-                  find_without_voodoo(:all, OOYALA::find_params(*args, self, &block))
+                  find_without_voodoo(args.slice(0), OOYALA::find_params(*args, self, &block))
                end
                alias_method_chain :find, :voodoo
 
