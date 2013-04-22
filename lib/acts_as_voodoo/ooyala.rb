@@ -42,6 +42,11 @@ module OOYALA
     return Generic.new( url: params.params_for_create, body: params.body_for_create )
   end
 
+  def self.destroy_params(*args, asset)
+    params = Parameters.new(*args, asset)
+    return Generic.new( url: params.params_for_destroy )
+  end
+
 end
 
 class Credentials < OpenStruct
@@ -91,8 +96,14 @@ class Parameters
   def params_for_create
     params              = self.parametrize_credentials
     path                = "/v2/#{@asset.class.collection_name}"
-    params['signature'] = OOYALA::generate_signature(  @asset.credentials.api_secret, "POST", path, params, self.body_for_create)
+    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "POST", path, params, self.body_for_create)
     "#{path}?#{params.to_query}"
+  end
+
+  def params_for_destroy
+    params              = self.parametrize_credentials
+    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "DELETE", self.element_path, params)
+    "#{self.element_path}?#{params.to_query}"
   end
 
   def find_scope
@@ -121,6 +132,10 @@ class Parameters
   end
 
   def body_for_create
+    @args.slice(0)
+  end
+
+  def element_path
     @args.slice(0)
   end
 
