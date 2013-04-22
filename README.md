@@ -60,13 +60,13 @@ end
 
 ### Query API Examples
 
-> For scopes, you can use :all, :first, :last. 
-> :one is not working as of now
+> For scopes, you can use `:all`, `:first`, `:last`. 
+> `:one` is not working as of now
 > scopes of integer id values are not recognized by the API. Use embed codes in place of integer IDs.
 > 
 > Note: 
-> :all will give an array of AR instances.
-> :first or :last will give an instance of AR.
+> `:all` will give an array of AR instances.
+> `:first` or `:last` will give an instance of AR.
 
 Find all assets.
 
