@@ -13,6 +13,50 @@ It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like
 - ActiveResource 4.0.0.beta1 or greater
 - ActiveSupport  4.0.0.beta1 or greater
 
+See the `examples` directory for more usage examples.
+
+### Installation
+
+beta only, not yet published as a gem.
+
+### Usage
+
+<table>
+  <caption>Query equality and relational operators</caption>
+  <tr>
+    <td><tt>==</tt></td>
+    <td>equals</td>
+  </tr>
+  <tr>
+    <td><tt>>=</tt></td>
+    <td>greater than or equal to</td>
+  </tr>
+  <tr>
+    <td><tt><=</tt></td>
+    <td>less than or equal to</td>
+  </tr>
+  <tr>
+    <td><tt>></tt></td>
+    <td>greater than</td>
+  </tr>
+  <tr>
+    <td><tt><</tt></td>
+    <td>less than</td>
+  </tr>
+  <tr>
+    <td><tt>!=</tt></td>
+    <td>not equal to</td>
+  </tr>
+  <tr>
+    <td><tt>IN</tt></td>
+    <td>Get assets in list of embed codes <tt>vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')"</tt></td>
+  </tr>
+  <tr>
+    <td><tt>=~</tt></td>
+    <td>INCLUDES for querying assets within labels <tt>vid.labels =~ "Case Study"</tt> gives assets contained in label "Case Study"</td>
+  </tr>
+</table>
+
 ``` ruby
 class Asset < ActiveResource::Base
    my_api_key    = '<API KEY HERE>'
@@ -32,14 +76,6 @@ results = Asset.find(:one) do |vid|
    vid.duration > 600
 end
 ```
-
-See the `examples` directory for more usage examples.
-
-### Installation
-
-beta only, not yet published as a gem.
-
-### Usage
 
 The Query API can be used to request detailed information about your assets.
 
