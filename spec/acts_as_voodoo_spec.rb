@@ -1,16 +1,117 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe 'acts_as_voodoo' do
+describe 'Asset' do
 
-  class Voodoo < ActiveResource::Base
-    acts_as_voodoo
+  class Asset < ActiveResource::Base
+     my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+
+     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+
+     self.site = "https://api.ooyala.com/v2"
   end
 
-  context "when included" do
+  context "when including acts_as_voodoo" do
+
+    before(:each) do
+      stub_request(:get, /.*/).to_return(:response => {:body => {}, :status => { :code => 200}})
+    end
     
-    it "should included ace_of_spades searchable method" do
-      Voodoo.should respond_to( :acts_as_voodoo )
+    before(:all) do
+      WebMock::HttpLibAdapters::EmHttpRequestAdapter.enable!
+      WebMock.disable_net_connect!
     end
 
+    after(:all) do
+      WebMock.allow_net_connect!
+    end
+
+    it "should included acts_as_voodoo method" do
+      Asset.should respond_to( :acts_as_voodoo )
+      Asset.primary_key.should == 'embed_code'
+    end
+
+    it "should have correct initial url configs" do 
+      Asset.site.host.should == "api.ooyala.com"
+      expect(Asset.site.path).to start_with("/v2")
+      Asset.collection_path.should == "/v2/assets"
+    end
+
+    it "should call get request with correct params for finding by name" do
+      Asset.should_receive(:find_without_voodoo) do |arg1, arg2|
+        (arg1.to_s).should eq("first")
+        arg2[:params].should include("where" => "name='Iron Sky'")
+      end
+      Asset.find(:first) { |asset| asset.name == "Iron Sky"}
+    end
+
+    it "should call get request with correct params for finding by description AND duration" do
+      Asset.should_receive(:find_without_voodoo) do |arg1, arg2|
+        (arg1.to_s).should eq("all")
+        arg2[:params].should include("where" => "description='and, with it, great responsibility.' AND duration>600")
+      end
+      Asset.find(:all) do |asset|
+         asset.description == "and, with it, great responsibility."
+         asset.duration > 600
+      end
+    end
+
+    it "should call get request with correct params for all find" do
+      Asset.should_receive(:find_without_voodoo) do |arg1, arg2|
+        (arg1.to_s).should eq("all")
+        arg2.keys.should_not include("where")
+      end
+      Asset.all
+    end
+  end  
+end
+
+describe 'Player' do
+
+  class Player < ActiveResource::Base
+     my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+
+     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+
+     self.site = "https://api.ooyala.com/v2"
   end
+
+  context "when including acts_as_voodoo" do
+
+    it "should included acts_as_voodoo method" do
+      Player.should respond_to( :acts_as_voodoo )
+    end
+
+    it "should have correct initial url configs" do 
+      Player.site.host.should == "api.ooyala.com"
+      expect(Player.site.path).to start_with("/v2")
+      Player.collection_path.should == "/v2/players"
+    end
+  end  
+end
+
+describe 'Label' do
+
+  class Label < ActiveResource::Base
+     my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+
+     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+
+     self.site = "https://api.ooyala.com/v2"
+  end
+
+  context "when including acts_as_voodoo" do
+
+    it "should included acts_as_voodoo method" do
+      Label.should respond_to( :acts_as_voodoo )
+    end
+
+    it "should have correct initial url configs" do 
+      Label.site.host.should == "api.ooyala.com"
+      expect(Label.site.path).to start_with("/v2")
+      Label.collection_path.should == "/v2/labels"
+    end
+  end  
 end
