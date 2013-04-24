@@ -198,6 +198,16 @@ describe 'Label' do
 
      self.site = "https://api.ooyala.com/v2"
   end
+    
+  let(:label) do
+    labels = nil
+    WebMock.allow_net_connect!
+    VCR.turned_off do 
+      labels = Label.find(:all)
+    end 
+    WebMock.disable_net_connect! 
+    labels.first
+  end
 
   context "when including acts_as_voodoo" do
 
@@ -210,5 +220,44 @@ describe 'Label' do
       expect(Label.site.path).to start_with("/v2")
       Label.collection_path.should == "/v2/labels"
     end
-  end  
+  end    
+
+  context "when creating labels" do
+        
+    before(:each) do
+      stub_request(:post, /.*/).to_return(:response => {:body => {}, :status => { :code => 200}})
+    end
+
+    it "should call create" do
+      new_label = Label.new
+      new_label.name = "new label"
+      new_label.should_receive(:create)
+      new_label.save
+    end
+  end    
+
+  context "when updating existing labels" do
+        
+    before(:each) do
+      stub_request(:patch, /.*/).to_return(:response => {:body => {}, :status => { :code => 200}})
+    end
+
+    it "should call update" do
+      label.should_receive(:update)
+      label.name = "updated name"
+      label.save
+    end
+  end   
+
+  context "when deleting existing labels" do
+        
+    before(:each) do
+      stub_request(:delete, /.*/).to_return(:response => {:body => {}, :status => { :code => 200}})
+    end
+
+    it "should call destroy" do
+      label.should_receive(:destroy)
+      label.destroy
+    end
+  end    
 end
