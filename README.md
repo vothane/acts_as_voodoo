@@ -28,11 +28,11 @@ beta only, not yet published as a gem.
     <td>equals</td>
   </tr>
   <tr>
-    <td><tt>>=</tt></td>
+    <td><tt>&gt;&#61;</tt></td>
     <td>greater than or equal to</td>
   </tr>
   <tr>
-    <td><tt><=</tt></td>
+    <td><tt>&lt;&#61;</tt></td>
     <td>less than or equal to</td>
   </tr>
   <tr>
