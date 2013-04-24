@@ -36,20 +36,20 @@ beta only, not yet published as a gem.
     <td>less than or equal to</td>
   </tr>
   <tr>
-    <td><tt>></tt></td>
+    <td><tt>&gt;</tt></td>
     <td>greater than</td>
   </tr>
   <tr>
-    <td><tt><</tt></td>
+    <td><tt>&lt;</tt></td>
     <td>less than</td>
   </tr>
   <tr>
-    <td><tt>!=</tt></td>
+    <td><tt>&#33;&#61;</tt></td>
     <td>not equal to</td>
   </tr>
   <tr>
-    <td><tt>IN</tt></td>
-    <td>Get assets in list of embed codes <tt>vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')"</tt></td>
+    <td><tt>*</tt></td>
+    <td>Get assets IN list of embed codes <tt>vid.embed_code * "('g0YzBnMjoGiHUtGoWW4pFzzhTZpKLZUi','g1YzBnMjrEWdqX0gNdtKwTwQREhEkf9e')"</tt></td>
   </tr>
   <tr>
     <td><tt>=~</tt></td>
