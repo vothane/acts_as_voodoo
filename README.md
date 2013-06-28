@@ -26,6 +26,7 @@ beta only, not yet published as a gem.
 when running tests: run one file at one time `rspec spec/*_spec.rb`
 running the whole test suite at one time `rspec spec/` will break the tests
 theres a bug in vcr that does this.
+Also platform matters too, will run on linux but not Windows.
 
 ### Usage
 

@@ -32,19 +32,8 @@ module OOYALA
 
   end
 
-  def self.update_params(*args, asset)
-    params = Parameters.new(*args, asset)
-    return Generic.new( url: params.params_for_update, body: params.body_for_update )
-  end
-
-  def self.create_params(*args, asset)
-    params = Parameters.new(*args, asset)
-    return Generic.new( url: params.params_for_create, body: params.body_for_create )
-  end
-
-  def self.destroy_params(*args, asset)
-    params = Parameters.new(*args, asset)
-    return Generic.new( url: params.params_for_destroy )
+  def self.get_params(*args, asset, request_type)
+    ParamsBuilder.build(*args, asset, request_type)
   end
 
 end
@@ -143,3 +132,15 @@ class Parameters
     { 'api_key' => @asset.credentials.api_key, 'expires' => OOYALA::expires }
   end
 end
+
+class ParamsBuilder
+    
+  def self.build(*args, asset, request_type)
+    http_params         = Parameters.new(*args, asset)
+    params_hash         = {}
+    params_hash[:url]   = http_params.send("params_for_#{request_type}".to_sym)
+    params_hash[:body]  = http_params.send("body_for_#{request_type}".to_sym) unless request_type == "destroy"
+    Generic.new( params_hash )
+  end
+    
+end    

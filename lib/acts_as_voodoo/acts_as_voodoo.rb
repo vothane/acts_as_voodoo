@@ -12,7 +12,7 @@ module Acts
 
             class << self
                def find_with_voodoo(*args, &block)
-                  find_without_voodoo(args.slice(0), OOYALA::find_params(*args, self, &block))
+                  find_without_voodoo(:all, OOYALA::find_params(*args, self, &block))
                end
                alias_method_chain :find, :voodoo
 
@@ -38,7 +38,7 @@ module Acts
       module InstanceMethods
 
          def update
-            params = OOYALA::update_params(encode, self)
+            params = OOYALA::get_params(encode, self, "update")
             run_callbacks :update do
               connection.patch(params.url, params.body, self.class.headers).tap do |response|
                 load_attributes_from_response(response)
@@ -47,7 +47,7 @@ module Acts
          end
 
          def create
-            params = OOYALA::create_params(encode, self)
+            params = OOYALA::get_params(encode, self, "create")
             run_callbacks :create do
               connection.post(params.url, params.body, self.class.headers).tap do |response|
                 self.id = id_from_response(response)
@@ -57,7 +57,7 @@ module Acts
          end
 
          def destroy
-            params = OOYALA::destroy_params(element_path, self)
+            params = OOYALA::get_params(element_path, self, "destroy")
             run_callbacks :destroy do
               connection.delete(params.url, self.class.headers)
             end

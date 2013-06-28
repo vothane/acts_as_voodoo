@@ -41,7 +41,7 @@ describe 'Asset' do
 
     it "should call get request with correct params for finding by name" do
       Asset.should_receive(:find_without_voodoo) do |arg1, arg2|
-        (arg1.to_s).should eq("first")
+        (arg1.to_s).should eq("all")
         arg2[:params].should include("where" => "name='Iron Sky'")
       end
       Asset.find(:first) { |asset| asset.name == "Iron Sky"}
