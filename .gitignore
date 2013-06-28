@@ -2,3 +2,4 @@
 .idea
 
 .c9revisions/
+/spec/support/empty_vcr_cassettes
