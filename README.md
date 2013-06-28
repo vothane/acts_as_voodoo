@@ -12,8 +12,8 @@ It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like
 ## Requirements
 
 - Ruby 1.9.3 or greater
-- ActiveResource 4.0.0.beta1 or greater
-- ActiveSupport  4.0.0.beta1 or greater
+- ActiveResource 4.0.0
+- ActiveSupport  4.0.0
 
 See the `examples` directory for more usage examples.
 
