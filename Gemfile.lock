@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    acts_as_voodoo (0.1.0)
+    acts_as_voodoo (0.5.0)
       activeresource (~> 4.0.0.beta1)
 
 GEM
@@ -54,7 +54,9 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activeresource (= 4.0.0.beta1)
+  activesupport (= 4.0.0.beta1)
   acts_as_voodoo!

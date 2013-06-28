@@ -12,7 +12,7 @@ describe 'acts_as_voodoo for labels' do
   end
 
   before :all do
-    Timecop.freeze(Time.local(2014, 1, 1, 10, 0, 0))
+    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
   end
 
   after :all do
@@ -23,7 +23,7 @@ describe 'acts_as_voodoo for labels' do
     context "when saving new labels" do
       let(:new_label) do
         label      = Label.new
-        label.name = "new label"
+        label.name = "test label"
         label
       end
 
@@ -43,14 +43,14 @@ describe 'acts_as_voodoo for labels' do
 
       let(:label_to_be_destroyed) do
         labels.each do |label|
-          if label.name == "new label"
+          if label.name == "test label"
             return label
           end
         end
       end
 
       it "should find newly created label" do
-        labels.collect { |label| label.name }.should include( "new label" )
+        labels.collect { |label| label.name }.should include( "test label" )
       end
 
       it "should destroy newly created label" do

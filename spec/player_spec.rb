@@ -12,7 +12,7 @@ describe 'acts_as_voodoo for players' do
   end
 
   before :all do
-    Timecop.freeze(Time.local(2014, 1, 1, 10, 0, 0))
+    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
   end
 
   after :all do
@@ -24,7 +24,7 @@ describe 'acts_as_voodoo for players' do
 
       let(:new_player) do
         player            = Player.new
-        player.name       = "new player"
+        player.name       = "test player"
         player
       end
 
@@ -44,14 +44,14 @@ describe 'acts_as_voodoo for players' do
 
       let(:player_to_be_destroyed) do
         players.each do |player|
-          if player.name == "new player"
+          if player.name == "test player"
             return player
           end
         end
       end
 
       it "should find newly created player" do
-        player_to_be_destroyed.name.should == "new player"
+        player_to_be_destroyed.name.should == "test player"
       end
 
       it "should destroy newly created player" do

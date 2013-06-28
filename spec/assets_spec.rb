@@ -12,7 +12,7 @@ describe 'acts_as_voodoo for assets' do
   end
 
   before :all do
-    Timecop.freeze(Time.local(2014, 1, 1, 10, 0, 0))
+    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
   end
 
   after :all do
@@ -25,15 +25,15 @@ describe 'acts_as_voodoo for assets' do
       let(:video) do
         VCR.use_cassette('find_video') do
           results = Asset.find(:one) do |vid|
-            vid.description == "Thor"
-            vid.duration > 600
+            vid.description == "sample1"
+            vid.duration > 5
           end
           results.first
         end
       end
 
       it "should update the name attribute through ooyala api" do
-        video.name = "Hear Me Roar!"
+        video.name = "zample1"
 
         VCR.use_cassette('update_video') do
           video.save.should be_true
@@ -46,15 +46,15 @@ describe 'acts_as_voodoo for assets' do
       let(:video_with_updated_name) do
         VCR.use_cassette('find_video_with_updated_name') do
           results = Asset.find(:one) do |vid|
-            vid.description == "Thor"
-            vid.duration > 600
+            vid.description == "named changed"
+            vid.duration > 5
           end
           results.first
         end
       end
 
       it "should have updated the name attribute on ooyala servers" do
-        video_with_updated_name.name.should == "Hear Me Roar!" 
+        video_with_updated_name.name.should == "zample1" 
       end  
     end
 
@@ -63,8 +63,8 @@ describe 'acts_as_voodoo for assets' do
       let(:video_to_be_deleted) do  
         VCR.use_cassette('find_video_to_delete') do
           results = Asset.find(:one) do |vid|
-            vid.description == "Under the sea."
-            vid.duration > 600
+            vid.description == "will be deleted."
+            vid.duration > 5
           end
           results.first
         end
