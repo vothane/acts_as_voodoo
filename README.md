@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/vothane/acts_as_voodoo.png)](https://codeclimate.com/github/vothane/acts_as_voodoo)
+
 Ooyala API V2 wrapper for Ruby (using ActiveResource) 
 ====================================================
 
@@ -18,6 +20,12 @@ See the `examples` directory for more usage examples.
 ### Installation
 
 beta only, not yet published as a gem.
+
+### RSpec Tests
+
+when running tests: run one file at one time `rspec spec/*_spec.rb`
+running the whole test suite at one time `rspec spec/` will break the tests
+theres a bug in vcr that does this.
 
 ### Usage
 

@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe 'Asset' do
     
   before(:all) do
-    WebMock::HttpLibAdapters::EmHttpRequestAdapter.enable!
     WebMock.disable_net_connect!
   end
 

@@ -67,7 +67,7 @@ describe 'acts_as_voodoo for querying assets' do
                   vid.duration < 600
                 end
     end
-    results.count.should > 1
+    results.count.should == 1
   end  
 
   it "should correctly query by union of criterias, or joining with AND" do
@@ -78,7 +78,7 @@ describe 'acts_as_voodoo for querying assets' do
                   vid.labels =~ "Movie Trailer"
                 end     
     end
-    results.count.should == 2
+    results.count.should == 1
   end 
 
   it "should find none when a criteria is FALSEY in union of criterias" do

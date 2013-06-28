@@ -23,13 +23,14 @@ describe 'acts_as_voodoo for assets' do
     context "when updating an attribute of an existing video" do
       
       let(:video) do
+        results = nil
         VCR.use_cassette('find_video') do
-          results = Asset.find(:one) do |vid|
-            vid.description == "sample1"
+          results = Asset.find(:all) do |vid|
+            vid.description == "This is the video"
             vid.duration > 5
           end
-          results.first
         end
+        results.first
       end
 
       it "should update the name attribute through ooyala api" do
@@ -44,13 +45,14 @@ describe 'acts_as_voodoo for assets' do
     context "when checking to see that the name attribute was actually updated" do 
       
       let(:video_with_updated_name) do
+        results = nil
         VCR.use_cassette('find_video_with_updated_name') do
-          results = Asset.find(:one) do |vid|
-            vid.description == "named changed"
+          results = Asset.find(:all) do |vid|
+            vid.description == "named changed."
             vid.duration > 5
           end
-          results.first
         end
+        results.first
       end
 
       it "should have updated the name attribute on ooyala servers" do
@@ -61,13 +63,14 @@ describe 'acts_as_voodoo for assets' do
     context "when deleting an existing video" do 
 
       let(:video_to_be_deleted) do  
+        results = nil
         VCR.use_cassette('find_video_to_delete') do
-          results = Asset.find(:one) do |vid|
+          results = Asset.find(:all) do |vid|
             vid.description == "will be deleted."
             vid.duration > 5
           end
-          results.first
         end
+        results.first
       end
 
       it "should delete an existing video" do
