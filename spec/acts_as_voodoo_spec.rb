@@ -8,6 +8,7 @@ describe 'Asset' do
 
   after(:all) do
     WebMock.allow_net_connect!
+    puts "\e[33mPlease run this test as rspec spec/act_as_voodoo_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   class Asset < ActiveResource::Base

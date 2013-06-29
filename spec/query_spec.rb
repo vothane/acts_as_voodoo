@@ -17,6 +17,7 @@ describe 'acts_as_voodoo for querying assets' do
 
   after :all do
     Timecop.return
+    puts "\e[33mPlease run this test as rspec spec/query_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   it "should find every video in ooyala account" do
@@ -91,4 +92,4 @@ describe 'acts_as_voodoo for querying assets' do
     end
     results.count.should == 0
   end
-end 
+end

@@ -17,6 +17,7 @@ describe 'acts_as_voodoo for labels' do
 
   after :all do
     Timecop.return
+    puts "\e[33mPlease run this test as rspec spec/labels_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   context "when labels" do
@@ -60,4 +61,4 @@ describe 'acts_as_voodoo for labels' do
       end
     end
   end
-end 
+end

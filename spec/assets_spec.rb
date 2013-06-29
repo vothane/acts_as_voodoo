@@ -17,6 +17,7 @@ describe 'acts_as_voodoo for assets' do
 
   after :all do
     Timecop.return
+    puts "\e[33mPlease run this test as rspec spec/assets_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   context "when assets are videos" do
@@ -98,4 +99,4 @@ describe 'acts_as_voodoo for assets' do
       end
     end
   end
-end 
+end

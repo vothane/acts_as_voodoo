@@ -17,6 +17,7 @@ describe 'acts_as_voodoo for players' do
 
   after :all do
     Timecop.return
+    puts "\e[33mPlease run this test as rspec spec/player_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   context "when assets are playerss" do
