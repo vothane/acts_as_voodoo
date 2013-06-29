@@ -3,12 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe 'acts_as_voodoo for assets' do
 
   class Asset < ActiveResource::Base
-     my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+    my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+    my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
 
-     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
 
-     self.site = "https://api.ooyala.com/v2"
+    self.site = "https://api.ooyala.com/v2"
   end
 
   before :all do
@@ -21,7 +21,7 @@ describe 'acts_as_voodoo for assets' do
 
   context "when assets are videos" do
     context "when updating an attribute of an existing video" do
-      
+
       let(:video) do
         results = nil
         VCR.use_cassette('find_video') do
@@ -41,9 +41,9 @@ describe 'acts_as_voodoo for assets' do
         end
       end
     end
-    
-    context "when checking to see that the name attribute was actually updated" do 
-      
+
+    context "when checking to see that the name attribute was actually updated" do
+
       let(:video_with_updated_name) do
         results = nil
         VCR.use_cassette('find_video_with_updated_name') do
@@ -56,13 +56,13 @@ describe 'acts_as_voodoo for assets' do
       end
 
       it "should have updated the name attribute on ooyala servers" do
-        video_with_updated_name.name.should == "zample1" 
-      end  
+        video_with_updated_name.name.should == "zample1"
+      end
     end
 
-    context "when deleting an existing video" do 
+    context "when deleting an existing video" do
 
-      let(:video_to_be_deleted) do  
+      let(:video_to_be_deleted) do
         results = nil
         VCR.use_cassette('find_video_to_delete') do
           results = Asset.find(:all) do |vid|
@@ -78,16 +78,16 @@ describe 'acts_as_voodoo for assets' do
           video_to_be_deleted.destroy.should be_true
         end
       end
-    end  
+    end
   end
 
   context "when assets are channels" do
     context "when creating new channels" do
 
       let(:new_channel) do
-        channel            = Asset.new
+        channel = Asset.new
         channel.asset_type = "channel"
-        channel.name       = "new channel"
+        channel.name = "new channel"
         channel
       end
 
@@ -97,5 +97,5 @@ describe 'acts_as_voodoo for assets' do
         end
       end
     end
-  end  
+  end
 end 

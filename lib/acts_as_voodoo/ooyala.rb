@@ -6,11 +6,11 @@ ROUND_UP_TIME = 300
 
 module OOYALA
   def self.generate_signature(secret, http_method, request_path, query_string_params, request_body = nil)
-    string_to_sign      = "#{secret}#{http_method}#{request_path}"
+    string_to_sign = "#{secret}#{http_method}#{request_path}"
     sorted_query_string = query_string_params.sort { |pair1, pair2| pair1[0].to_s <=> pair2[0].to_s }
-    string_to_sign      += sorted_query_string.map { |key, value| "#{key}=#{value}" }.join
-    string_to_sign      += request_body.to_s
-    signature           = Base64::encode64(Digest::SHA256.digest(string_to_sign))[0..42].chomp("=")
+    string_to_sign += sorted_query_string.map { |key, value| "#{key}=#{value}" }.join
+    string_to_sign += request_body.to_s
+    signature = Base64::encode64(Digest::SHA256.digest(string_to_sign))[0..42].chomp("=")
     return signature
   end
 
@@ -19,7 +19,8 @@ module OOYALA
     expiration + ROUND_UP_TIME - (expiration%ROUND_UP_TIME)
   end
 
-  def self.find_params(*args, asset, &block)
+  def self.find_params(*args,
+    asset, &block)
 
     find_params = Parameters.new(*args, asset)
 
@@ -32,7 +33,8 @@ module OOYALA
 
   end
 
-  def self.get_params(*args, asset, request_type)
+  def self.get_params(*args,
+    asset, request_type)
     ParamsBuilder.build(*args, asset, request_type)
   end
 
@@ -45,53 +47,54 @@ class Generic < OpenStruct
 end
 
 class Parameters
-  def initialize(*args, asset)
-    @args  = args
+  def initialize(*args,
+    asset)
+    @args = args
     @asset = asset
   end
 
   def params_with_block(conditions)
     this_params = self.parametrize_credentials
     this_params.merge(options) if find_options.instance_of? Hash
-    this_params['where']     = conditions.to_where_conditions
-    this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", self.find_path, this_params, nil )
-    return { :params => this_params }
+    this_params['where'] = conditions.to_where_conditions
+    this_params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "GET", self.find_path, this_params, nil)
+    return {:params => this_params}
   end
 
   def params_without_block
     this_params = self.parametrize_credentials
-    options     = self.find_options
-    path        = self.find_path
+    options = self.find_options
+    path = self.find_path
 
     if options && options[:from]
-      this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", "#{path}#{options[:from]}", this_params)
-      return { :from => "#{path}#{options[:from]}", :params => this_params }
+      this_params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "GET", "#{path}#{options[:from]}", this_params)
+      return {:from => "#{path}#{options[:from]}", :params => this_params}
     elsif options
-      this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", path, this_params )
+      this_params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "GET", path, this_params)
       return this_params.merge({:params => options})
     else
-      this_params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "GET", path, this_params )
-      return { :params => this_params }
+      this_params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "GET", path, this_params)
+      return {:params => this_params}
     end
   end
 
   def params_for_update
-    params              = self.parametrize_credentials
-    path                = "/v2/#{@asset.class.collection_name}/#{@asset.id}"
-    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "PATCH", "#{path}", params, self.body_for_update)
+    params = self.parametrize_credentials
+    path = "/v2/#{@asset.class.collection_name}/#{@asset.id}"
+    params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "PATCH", "#{path}", params, self.body_for_update)
     "#{path}?#{params.to_query}"
   end
 
   def params_for_create
-    params              = self.parametrize_credentials
-    path                = "/v2/#{@asset.class.collection_name}"
-    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "POST", path, params, self.body_for_create)
+    params = self.parametrize_credentials
+    path = "/v2/#{@asset.class.collection_name}"
+    params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "POST", path, params, self.body_for_create)
     "#{path}?#{params.to_query}"
   end
 
   def params_for_destroy
-    params              = self.parametrize_credentials
-    params['signature'] = OOYALA::generate_signature( @asset.credentials.api_secret, "DELETE", self.element_path, params)
+    params = self.parametrize_credentials
+    params['signature'] = OOYALA::generate_signature(@asset.credentials.api_secret, "DELETE", self.element_path, params)
     "#{self.element_path}?#{params.to_query}"
   end
 
@@ -102,9 +105,9 @@ class Parameters
   end
 
   def find_path
-    path  = "/v2/#{@asset.collection_name}"
+    path = "/v2/#{@asset.collection_name}"
     scope = self.find_scope
-    path  = "#{path}/#{scope}" if scope.instance_of? String
+    path = "#{path}/#{scope}" if scope.instance_of? String
     path
   end
 
@@ -129,18 +132,19 @@ class Parameters
   end
 
   def parametrize_credentials
-    { 'api_key' => @asset.credentials.api_key, 'expires' => OOYALA::expires }
+    {'api_key' => @asset.credentials.api_key, 'expires' => OOYALA::expires}
   end
 end
 
 class ParamsBuilder
-    
-  def self.build(*args, asset, request_type)
-    http_params         = Parameters.new(*args, asset)
-    params_hash         = {}
-    params_hash[:url]   = http_params.send("params_for_#{request_type}".to_sym)
-    params_hash[:body]  = http_params.send("body_for_#{request_type}".to_sym) unless request_type == "destroy"
-    Generic.new( params_hash )
+
+  def self.build(*args,
+    asset, request_type)
+    http_params = Parameters.new(*args, asset)
+    params_hash = {}
+    params_hash[:url] = http_params.send("params_for_#{request_type}".to_sym)
+    params_hash[:body] = http_params.send("body_for_#{request_type}".to_sym) unless request_type == "destroy"
+    Generic.new(params_hash)
   end
-    
+
 end    

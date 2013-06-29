@@ -3,12 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe 'acts_as_voodoo for labels' do
 
   class Label < ActiveResource::Base
-     my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
+    my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+    my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
 
-     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
+    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
 
-     self.site = "https://api.ooyala.com/v2"
+    self.site = "https://api.ooyala.com/v2"
   end
 
   before :all do
@@ -22,7 +22,7 @@ describe 'acts_as_voodoo for labels' do
   context "when labels" do
     context "when saving new labels" do
       let(:new_label) do
-        label      = Label.new
+        label = Label.new
         label.name = "test label"
         label
       end
@@ -50,7 +50,7 @@ describe 'acts_as_voodoo for labels' do
       end
 
       it "should find newly created label" do
-        labels.collect { |label| label.name }.should include( "test label" )
+        labels.collect { |label| label.name }.should include("test label")
       end
 
       it "should destroy newly created label" do

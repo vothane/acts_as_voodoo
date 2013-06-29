@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe 'acts_as_voodoo for players' do
 
   class Player < ActiveResource::Base
-    my_api_key    = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
+    my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
 
     acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
@@ -23,8 +23,8 @@ describe 'acts_as_voodoo for players' do
     context "when creating new players" do
 
       let(:new_player) do
-        player            = Player.new
-        player.name       = "test player"
+        player = Player.new
+        player.name = "test player"
         player
       end
 
