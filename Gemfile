@@ -8,7 +8,6 @@ gem 'timecop'
 gem 'vcr'
 gem 'rspec'
 gem 'webmock'
-gem 'factory_girl'
 gem 'pry'
 
 gemspec
