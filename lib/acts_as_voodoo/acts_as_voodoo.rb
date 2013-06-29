@@ -8,7 +8,7 @@ module Acts
       def acts_as_voodoo(credentials = {})
         @primary_key = 'embed_code' if element_name == 'asset'
         cattr_accessor :credentials
-        self.credentials = Credentials.new(api_key : credentials[:api_key], api_secret : credentials[:api_secret])
+        self.credentials = Credentials.new(api_key: credentials[:api_key], api_secret: credentials[:api_secret])
 
         class << self
           def find_with_voodoo(*args, &block)
