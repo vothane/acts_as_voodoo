@@ -17,7 +17,6 @@ describe 'acts_as_voodoo for players' do
 
   after :all do
     Timecop.return
-    puts "\e[33mPlease run this test as rspec spec/player_spec.rb. Using rspec spec will break tests.\e[0m"
   end
 
   context "when assets are playerss" do
@@ -30,18 +29,14 @@ describe 'acts_as_voodoo for players' do
       end
 
       it "should create a new player" do
-        VCR.use_cassette('create_player') do
-          new_player.save.should be_true
-        end
+        http_data = objectize_yaml('create_player') 
+        ActiveResource::HttpMock.respond_to { |mock| mock.post "/v2/players?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=j6vRx5iR1zmQeQcxqcJCr1twaqgrkFejXPLgT%2B9ptvc", {"Content-Type"=>"application/json"}, http_data.request_body }
+
+        new_player.save.should be_true
       end
     end
 
     context "when finding that player that was just saved and then destroy it" do
-      let(:players) do
-        VCR.use_cassette('find_all_players') do
-          players = Player.find(:all)
-        end
-      end
 
       let(:player_to_be_destroyed) do
         players.each do |player|
@@ -52,6 +47,9 @@ describe 'acts_as_voodoo for players' do
       end
 
       it "should find newly created player" do
+        http_data = objectize_yaml('find_all_players') 
+        ActiveResource::HttpMock.respond_to { |mock| mock.get "/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=KVpWAHBa3B5v3m3jWPafX0cSi36t7Fw%2ByYdqZeXPtyw", {"Accept"=>"application/json"}, http_data.response_body }
+       
         player_to_be_destroyed.name.should == "test player"
       end
 
