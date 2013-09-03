@@ -5,9 +5,7 @@ source 'https://rubygems.org'
 gem 'activeresource', '4.0.0'
 gem 'activesupport', '4.0.0'
 gem 'timecop'
-gem 'vcr'
 gem 'rspec'
-gem 'webmock'
 gem 'pry'
 
 gemspec

@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=mqrv1TPN0ZVTFbp0b8mBfAUf%2Br1qXz8K5mNV%2BM/fGdk&where=description='Iron%20Man,%20Thor,%20Captain%20America,%20and%20the%20Hulk'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.5
+      Date:
+      - Fri, 28 Jun 2013 22:56:08 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '755'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '298'
+      X-Ratelimit-Reset:
+      - '59'
+      Ooyala-Server-Id:
+      - i-2fb35657,i-74e0a20c
+      Ooyala-Request-Id:
+      - b050a44defb197369e9490002eab7f60
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '509809907'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"asset_type":"video","created_at":"2012-03-10T19:26:27Z","description":"Nick
+        Fury, the director of S.H.I.E.L.D., assembles a group of superheroes that
+        includes Iron Man, Thor, Captain America, and the Hulk to fight a new enemy
+        that is threatening the safety of the world.","duration":143477,"embed_code":"o1NmdxMzrrWwbOVk_wIqhw-AmhlOMO49","external_id":null,"name":"Avengers","preview_image_url":"http://ak.c.ooyala.com/o1NmdxMzrrWwbOVk_wIqhw-AmhlOMO49/j14TFkN_kLvndon35hMDoxOmFkO7UOTK","status":"live","time_restrictions":null,"updated_at":"2013-06-06T23:18:26Z","hosted_at":null,"original_file_name":"Marvel
+        Avengers Assemble (2012) Watch the Official trailer _.flv","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

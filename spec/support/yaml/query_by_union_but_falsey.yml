@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=iuk1sdZWdFeSop3vi2D%2B05xt2LVuHRwOnlxMWhdNoO4&where=description='Thor'%20AND%20labels%20INCLUDES%20'TV%20Commercial'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.5
+      Date:
+      - Fri, 28 Jun 2013 22:56:11 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '12'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '293'
+      X-Ratelimit-Reset:
+      - '56'
+      Ooyala-Server-Id:
+      - i-1b40a663,i-74e0a20c
+      Ooyala-Request-Id:
+      - 1243d211f59efba8d5cd7964fc380624
+      X-Varnish-Ip:
+      - 10.251.243.175
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1259616552'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

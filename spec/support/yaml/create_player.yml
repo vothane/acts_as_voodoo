@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.ooyala.com/v2/players?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=%2BAAzcZAAM5GSUizNofrtGGJFewmvNXsOIByL9dhzgo8
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"test player"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.5
+      Date:
+      - Fri, 28 Jun 2013 22:57:15 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1405'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '299'
+      X-Ratelimit-Reset:
+      - '60'
+      Ooyala-Server-Id:
+      - i-877134f6,i-74e0a20c
+      Ooyala-Request-Id:
+      - 8dd26160f9984c0120d4adb2e1e2bafc
+    body:
+      encoding: US-ASCII
+      string: ! '{"id":"2ccaa4169c574c22aec0471f356d515c","name":"test player","is_default":false,"provider_homepage_url":null,"provider_name":null,"default_closed_caption_language":"","watermark":{"alpha":1.0,"click_url":null,"image_url":null},"scrubber":{"always_show":false,"image_url":null},"playback":{"buffer_on_pause":false},"ooyala_branding":{"accent_color":"#ffbb00","digg_sharing":false,"stumble_upon_sharing":false,"facebook_sharing":false,"twitter_sharing":false,"email_sharing":true,"url_sharing":false,"show_ad_countdown":true,"show_info_button":true,"show_embed_button":true,"show_channel_button":true,"show_share_button":true,"show_bitrate_button":false,"show_volume_button":true,"show_fullscreen_button":true,"show_info_screen_title":true,"show_info_screen_description":false,"show_info_screen_homepage_link":true,"show_info_screen_presented_by":true,"show_end_screen_replay_button":true,"show_end_screen_share_button":true,"show_end_screen_info_button":false,"show_end_screen_more_videos":true,"show_end_screen_embed_button":true,"show_start_screen_title":true,"show_start_screen_description":true,"show_start_screen_play_button_text":true,"enable_error_screen":true,"chromeless":false},"related_videos":{"source":"shared_labels","labels":[],"sort":"upload_time","order":"desc","click_behavior":"new_page"},"up_next_preview":{"timing":"disabled","seconds_before_end":null},"audio":{"show_download":true}}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

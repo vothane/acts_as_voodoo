@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=q6j6t8BXwAb0iSNGV07RaNN%2B%2B6Xa%2BYvpSBLMV3NgmGQ&where=duration%3C600
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Fri, 28 Jun 2013 22:56:10 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '295'
+      X-Ratelimit-Reset:
+      - '57'
+      Ooyala-Server-Id:
+      - i-1d0f1d7b,i-f0e3a188
+      Ooyala-Request-Id:
+      - b0225c6f45fb035b0191618de0355174
+      X-Varnish-Ip:
+      - 10.251.243.175
+      Content-Length:
+      - '410'
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '1259616496'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"asset_type":"channel","created_at":"2013-06-28T22:49:58Z","description":null,"duration":0,"embed_code":"5xbGV2YzqpldVKQESMLonC5uyE5MMqsc","external_id":null,"name":"new
+        channel","preview_image_url":null,"status":"live","time_restrictions":null,"updated_at":"2013-06-28T22:49:58Z","hosted_at":null,"original_file_name":null,"publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

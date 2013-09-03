@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.ooyala.com/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=EM22nnajcMxpPta3Iauun5UpIIFhdq%2BQnhX0tKLYhRo
+    body:
+      encoding: US-ASCII
+      string: ! '{"asset_type":"channel","name":"new channel"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Fri, 28 Jun 2013 22:49:58 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '398'
+      X-Ratelimit-Credits:
+      - '294'
+      X-Ratelimit-Reset:
+      - '57'
+      Ooyala-Server-Id:
+      - i-db3cccbc,i-90e3a1e8
+      Ooyala-Request-Id:
+      - 738f839a9d42c612da4e9d2ad14343f3
+    body:
+      encoding: US-ASCII
+      string: ! '{"asset_type":"channel","created_at":"2013-06-28T22:49:58Z","description":null,"duration":0,"embed_code":"5xbGV2YzqpldVKQESMLonC5uyE5MMqsc","external_id":null,"name":"new
+        channel","preview_image_url":null,"status":"live","time_restrictions":null,"updated_at":"2013-06-28T22:49:58Z","hosted_at":null,"original_file_name":null,"publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

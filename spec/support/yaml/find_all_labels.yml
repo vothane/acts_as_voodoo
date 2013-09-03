@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ooyala.com/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=u36d9BAVcx6jmoGe1EHWow9eOFN8F5YArIkLZi7RnfY
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.5
+      Date:
+      - Fri, 28 Jun 2013 22:50:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '968'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '292'
+      X-Ratelimit-Reset:
+      - '16'
+      Ooyala-Server-Id:
+      - i-01a0f87a,i-90e3a1e8
+      Ooyala-Request-Id:
+      - cc16125edc34a315d524fadf3104db8c
+      X-Varnish-Ip:
+      - 10.28.97.158
+      Accept-Ranges:
+      - bytes
+      X-Varnish:
+      - '509797021'
+      Via:
+      - 1.1 varnish
+      Age:
+      - '0'
+      X-Varnish-Cache:
+      - MISS
+    body:
+      encoding: US-ASCII
+      string: ! '{"items":[{"name":"Movie Trailer","full_name":"/Movie Trailer","id":"b5e9bf9a0e5a4b31991cfdf9218c4342","parent_id":null},{"name":"my
+        new label","full_name":"/my new label","id":"1130c81a640d4bb8a095429437270283","parent_id":null},{"name":"new
+        label","full_name":"/new label","id":"14f9b012437244e18638c08583ab8d27","parent_id":null},{"name":"new
+        label","full_name":"/new label","id":"87e66d8f45ec4e9f972e67a33fcd04f1","parent_id":null},{"name":"test
+        label","full_name":"/test label","id":"4717b99231ae4f04bef9519cec765ec1","parent_id":null},{"name":"test
+        label","full_name":"/test label","id":"9012cc281ab44903a3c878c9e5c8faf5","parent_id":null},{"name":"test
+        label","full_name":"/test label","id":"d99da29f3b2a4812801b3b64e0ec07d4","parent_id":null},{"name":"test
+        label","full_name":"/test label","id":"f0b0055ac62a4494bdc5127946c72d1c","parent_id":null},{"name":"TV
+        Commercial","full_name":"/TV Commercial","id":"3329684004c444d3b7b03707dcdaf7d0","parent_id":null}]}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

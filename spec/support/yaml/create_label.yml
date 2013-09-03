@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.ooyala.com/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=EhXpiJKTc31O5yM5We3vBjFoTKksXZXQX9HSO4pWvTU
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"test label"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.2.5
+      Date:
+      - Fri, 28 Jun 2013 22:50:39 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      X-Ratelimit-Credits:
+      - '293'
+      X-Ratelimit-Reset:
+      - '16'
+      Ooyala-Server-Id:
+      - i-21b35659,i-38e3a140
+      Ooyala-Request-Id:
+      - 8f9f237877cedc6ce9f8a08845f0e65e
+    body:
+      encoding: US-ASCII
+      string: ! '{"name":"test label","full_name":"/test label","id":"f0b0055ac62a4494bdc5127946c72d1c","parent_id":null}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0

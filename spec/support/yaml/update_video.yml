@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://api.ooyala.com/v2/assets/poYXgzYjri-57mxxMADjcv8M4C2B63Cz?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=045bze9a3B%2B6ObwbTw4szlb4u3tYlt1FjSnareiiooI
+    body:
+      encoding: US-ASCII
+      string: ! '{"asset_type":"video","description":"This is the video that just
+        had its named changed.","external_id":null,"name":"zample1","preview_image_url":"http://ak.c.ooyala.com/poYXgzYjri-57mxxMADjcv8M4C2B63Cz/Ut_HKthATH4eww8X4xMDoxOjBmO230Ws","status":"live","time_restrictions":null,"hosted_at":null,"original_file_name":"sample1.mp4","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.0.0
+      Date:
+      - Fri, 28 Jun 2013 22:49:56 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      - 200 OK
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Cache-Control:
+      - no-cache
+      Content-Length:
+      - '538'
+      X-Ratelimit-Credits:
+      - '298'
+      X-Ratelimit-Reset:
+      - '59'
+      Ooyala-Server-Id:
+      - i-1d0f1d7b,i-f0e3a188
+      Ooyala-Request-Id:
+      - 1f77b371eb289010261ae57cf5079584
+    body:
+      encoding: US-ASCII
+      string: ! '{"asset_type":"video","created_at":"2013-04-21T20:44:35Z","description":"This
+        is the video that just had its named changed.","duration":6506,"embed_code":"poYXgzYjri-57mxxMADjcv8M4C2B63Cz","external_id":null,"name":"zample1","preview_image_url":"http://ak.c.ooyala.com/poYXgzYjri-57mxxMADjcv8M4C2B63Cz/Ut_HKthATH4eww8X4xMDoxOjBmO230Ws","status":"live","time_restrictions":null,"updated_at":"2013-06-28T22:49:56Z","hosted_at":null,"original_file_name":"sample1.mp4","publishing_rule_id":"37aa7371be4f4937b40bb12966f28235","ad_set_id":null}'
+    http_version: 
+  recorded_at: Wed, 01 Jan 2020 15:00:00 GMT
+recorded_with: VCR 2.5.0
