@@ -11,14 +11,6 @@ describe 'acts_as_voodoo for labels' do
     self.site = "https://api.ooyala.com/v2"
   end
 
-  before :all do
-    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
-  end
-
-  after :all do
-    Timecop.return
-  end
-
   context "when labels" do
     context "when saving new labels" do
       let(:new_label) do

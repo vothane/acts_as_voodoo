@@ -1,5 +1,4 @@
 require 'pry'
-require 'timecop'
 require 'uri'
 
 $:.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
@@ -31,3 +30,9 @@ def create_http_data(raw_data)
    http_data.response_body = data["response"]["body"]["string"]
    http_data
 end
+
+module OOYALA
+  def self.expires(expiration_window = 25)
+    1577898300
+  end
+end  

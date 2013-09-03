@@ -2,14 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe 'Asset' do
 
-  before :all do
-    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
-  end
-
-  after :all do
-    Timecop.return
-  end
-
   class Asset < ActiveResource::Base
     my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
     my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'

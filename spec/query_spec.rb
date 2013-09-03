@@ -11,14 +11,6 @@ describe 'acts_as_voodoo for querying assets' do
     self.site = "https://api.ooyala.com/v2"
   end
 
-  before :all do
-    Timecop.freeze(Time.local(2020, 1, 1, 10, 0, 0))
-  end
-
-  after :all do
-    Timecop.return
-  end
-
   it "should find every video in ooyala account" do
     http_data = objectize_yaml('find_video')        
     ActiveResource::HttpMock.respond_to { |mock| mock.get "/v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=ClzQGSks95XkKXcGig5StzjtjGLlzAuD3ZtIT0TQReA", {"Accept"=>"application/json"}, http_data.response_body }
