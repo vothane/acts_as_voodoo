@@ -9,7 +9,7 @@ ActiveResource client that consumes a non-REST API [OOYALA V2 API](http://api.oo
 
 ActiveResource code base was heavily modified during the development process to process the non-RESTful HTTP requests.
 
-It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like syntax, i.e.:
+It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like syntax and provides a DSL for querying video records that abstracts away the SQL like queries expected by this API.
 
 ## Requirements
 

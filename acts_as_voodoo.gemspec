@@ -4,8 +4,8 @@ require File.expand_path('../lib/acts_as_voodoo/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Thane Vo"]
   gem.email         = ["vothane@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{ActiveResource client that consumes the non-REST API OOYALA V2 API.}
+  gem.summary       = %q{It allows you to interface with the Ooyala v2 API using simple ActiveRecord-like syntax.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
