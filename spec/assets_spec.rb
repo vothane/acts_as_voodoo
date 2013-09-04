@@ -1,16 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe 'acts_as_voodoo for assets' do
-
-  class Asset < ActiveResource::Base
-    my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-    my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
-
-    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
-
-    self.site = "https://api.ooyala.com/v2"
-  end
-
+  
   context "when assets are videos" do
     context "when updating an attribute of an existing video" do       
       it "should update the name attribute through ooyala api" do 

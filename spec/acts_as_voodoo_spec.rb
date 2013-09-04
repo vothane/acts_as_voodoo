@@ -1,16 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe 'Asset' do
-
-  class Asset < ActiveResource::Base
-    my_api_key = 'JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb'
-    my_api_secret = 'nU2WjeYoEY0MJKtK1DRpp1c6hNRoHgwpNG76dJkX'
-
-    acts_as_voodoo :api_key => my_api_key, :api_secret => my_api_secret
-
-    self.site = "https://api.ooyala.com/v2"
-  end
-
+  
   context "when including acts_as_voodoo" do
 
     it "should included acts_as_voodoo method" do
