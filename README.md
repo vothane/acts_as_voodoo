@@ -21,7 +21,9 @@ See the `examples` directory for more usage examples.
 
 ### Installation
 
-beta only, not yet published as a gem.
+`cd <PATH>/acts_as_voodoo`
+
+`bundle install`
 
 ### Usage
 
