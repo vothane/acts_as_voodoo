@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    acts_as_voodoo (0.6.0)
-      activeresource (~> 4.0.0.beta1)
+    acts_as_voodoo (0.7.0)
+      activeresource (~> 4.0.0)
 
 GEM
   remote: https://rubygems.org/

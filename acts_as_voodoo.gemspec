@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = ActsAsVoodoo::VERSION
 
-  gem.add_dependency("activeresource", ["~> 4.0.0.beta1"])
+  gem.add_dependency("activeresource", ["~> 4.0.0"])
 end
