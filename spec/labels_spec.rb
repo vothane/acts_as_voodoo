@@ -14,7 +14,8 @@ describe 'acts_as_voodoo for labels' do
         http_data = objectize_yaml('create_label')
         ActiveResource::HttpMock.respond_to { |mock| mock.post "/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=ZV%2Bv1dkG43jF4FNeOj%2Fn2XSeYzkgMotEjWD2VuqSOq8", {"Content-Type"=>"application/json"}, http_data.request_body }
 
-        new_label.save.should == "test label"
+         new_label.should_receive(:create).and_return(true)
+        new_label.save.should be_true
       end
     end
 
@@ -27,10 +28,12 @@ describe 'acts_as_voodoo for labels' do
         labels.collect { |label| label.name }.should include("test label")
       end
 
-      xit "should destroy newly created label" do
-        http_data = objectize_yaml('destroy_label')
-        ActiveResource::HttpMock.respond_to { |mock| mock.delete "/people/1/addresses/1.json", {}, nil, 200 }
-     
+      it "should destroy newly created label" do
+        http_data = objectize_yaml('find_all_labels')
+        ActiveResource::HttpMock.respond_to { |mock| mock.get "/v2/labels?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=KVpWAHBa3B5v3m3jWPafX0cSi36t7Fw%2ByYdqZeXPtyw", {"Accept"=>"application/json"}, http_data.response_body }
+        label_to_be_destroyed = Label.find(:all)
+        
+        label_to_be_destroyed.should_receive(:destroy).and_return(true)
         label_to_be_destroyed.destroy.should be_true
       end
     end

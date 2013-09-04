@@ -68,10 +68,8 @@ describe 'acts_as_voodoo for assets' do
         channel
       end
 
-      xit "should create a new channel" do
-        http_data = objectize_yaml('create_channel')
-        ActiveResource::HttpMock.respond_to { |mock| mock.post "v2/assets?api_key=JkN2w61tDmKgPl4y395Rp1vAdlcq.IqBgb&expires=1577898300&signature=Vce2lMA%2B4zYH0hO2%2FHpQIyBLI%2Bf1EDuBOClbeFz9sqU", {"Content-Type"=>"application/json"}, http_data.request_body }
-
+      it "should create a new channel" do
+        new_channel.should_receive(:create).and_return(true)
         new_channel.save.should be_true
       end
     end
